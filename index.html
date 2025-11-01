@@ -1,24 +1,80 @@
+<!-- index.html (root) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zenformed</title>
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Premium business websites and automation systems. Fast, secure, and designed for growth. Modern, responsive sites built like systems."
+    />
+    <meta
+      name="keywords"
+      content="web design, website development, business automation, custom websites, modern web development"
+    />
+    <meta name="author" content="Zenformed" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- Tailwind CDN -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zenformed.com/" />
+    <meta property="og:title" content="Zenformed — Calm, modern systems" />
+    <meta
+      property="og:description"
+      content="Premium business websites and automation systems. Fast, secure, and designed for growth."
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://zenformed.com/" />
+    <meta property="twitter:title" content="Zenformed — Calm, modern systems" />
+    <meta
+      property="twitter:description"
+      content="Premium business websites and automation systems. Fast, secure, and designed for growth."
+    />
+
+    <title>Zenformed — Calm, modern systems</title>
+
+    <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Basic styles for now -->
-    <style>
-      body {
-        font-family: ui-sans-serif, system-ui, -apple-system;
-      }
-    </style>
-  </head>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles/main.css" />
 
-  <body class="bg-white flex items-center justify-center min-h-screen">
-    <h1 class="text-4xl font-semibold text-gray-800">
-      Zenformed is under development 🚀
-    </h1>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Zenformed",
+        "description": "Premium business websites and automation systems. Fast, secure, and designed for growth.",
+        "url": "https://zenformed.com",
+        "serviceType": ["Web Design", "Website Development", "Business Automation", "System Integration"],
+        "areaServed": "Worldwide"
+      }
+    </script>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Sections mount points -->
+    <header id="hero"></header>
+    <main>
+      <div id="about"></div>
+      <div id="services"></div>
+    </main>
+    <footer id="contact"></footer>
+
+    <!-- Loader util -->
+    <script type="module">
+      import { loadSection } from './js/sections.js';
+
+      // Wait for DOM to be fully loaded before calling
+      document.addEventListener('DOMContentLoaded', () => {
+        loadSection('#hero', './sections/hero.html');
+        loadSection('#about', './sections/about.html');
+        loadSection('#services', './sections/services.html');
+        loadSection('#contact', './sections/contact.html');
+      });
+    </script>
   </body>
 </html>
