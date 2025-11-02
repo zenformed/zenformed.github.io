@@ -57,3 +57,106 @@ html {
     #121418 100%
   );
 }
+
+/* ============================================================
+   HERO SECTION STYLES - Base (1920px)
+   ============================================================ */
+
+/* Hero image container - base styles for 1920 */
+.hero-image-container {
+  top: auto;
+  bottom: -27%;
+  left: 15%;
+}
+
+.hero-image-wrapper {
+  transform: skew(15deg, -10deg) rotate(5deg);
+  width: 90%;
+  height: 90%;
+}
+
+/* Hero gradient overlay */
+.hero-gradient-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(18, 20, 24, 0.3) 80%,
+    rgba(18, 20, 24, 1) 100%
+  );
+}
+
+/* ============================================================
+   4K RESPONSIVE STYLES (2560px and up)
+   ============================================================ */
+@media (min-width: 2560px) {
+  /* Navbar */
+  nav#navbar {
+    height: 100px;
+  }
+
+  nav#navbar .max-w-6xl {
+    max-width: 144rem !important; /* 2x 72rem for 4K */
+  }
+
+  nav#navbar .max-w-6xl > div {
+    height: 100px;
+  }
+
+  nav#navbar img {
+    height: 40px;
+    width: 40px;
+  }
+
+  nav#navbar span {
+    font-size: 2.5rem !important;
+  }
+
+  nav#navbar a:not([class*="logo"]) {
+    font-size: 2.5rem !important; /* 25% bigger: 1.5 * 1.25 = 1.875 */
+  }
+
+  /* Hero section */
+  .hero-section .max-w-6xl {
+    max-width: 144rem !important; /* 2x 72rem for 4K */
+  }
+
+  .hero-section {
+    padding-top: 400px;
+  }
+
+  .hero-title {
+    font-size: 7rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 2.25rem !important;
+    max-width: 100% !important;
+  }
+
+  .hero-button {
+    font-size: 1.5rem !important;
+    padding: 1rem 2rem !important;
+  }
+
+  .hero-buttons {
+    gap: 1rem !important;
+  }
+
+  .hero-image-container {
+    bottom: -20% !important;
+    left: 15% !important;
+  }
+
+  .hero-image-wrapper {
+    width: 90% !important;
+    height: 90% !important;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES (below 768px)
+   ============================================================ */
+@media (max-width: 767px) {
+  /* Mobile hero styles go here when needed */
+}

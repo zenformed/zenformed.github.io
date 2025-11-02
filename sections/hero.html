@@ -1,28 +1,28 @@
 <!-- /sections/hero.html -->
 <section
-  class="relative overflow-hidden bg-gradient-radial text-white h-screen flex items-start pt-40"
+  class="relative overflow-hidden bg-gradient-radial text-white h-screen flex items-start pt-40 hero-section"
 >
   <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
     <div class="flex flex-col gap-6 md:gap-8">
-      <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+      <h1 class="text-4xl md:text-6xl font-semibold leading-tight hero-title">
         Calm, modern business websites<br class="hidden md:block" />
         built like systems.
       </h1>
 
-      <p class="text-lg md:text-xl text-gray-400 max-w-2xl">
+      <p class="text-lg md:text-xl text-gray-400 max-w-2xl hero-subtitle">
         Fast, scalable, automation-ready platforms for growing businesses.
       </p>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 hero-buttons">
         <a
           href="#contact"
-          class="inline-flex items-center px-5 py-3 rounded-md bg-white text-black hover:opacity-90"
+          class="inline-flex items-center px-5 py-3 rounded-md bg-white text-black hover:opacity-90 hero-button"
         >
           Start a project
         </a>
         <a
           href="#"
-          class="inline-flex items-center px-5 py-3 rounded-md border border-gray-300 hover:bg-gray-50 hover:text-black"
+          class="inline-flex items-center px-5 py-3 rounded-md border border-gray-300 hover:bg-gray-50 hover:text-black hero-button"
         >
           See capabilities
         </a>
@@ -32,13 +32,9 @@
 
   <!-- Background image -->
   <div
-    class="pointer-events-none absolute inset-0 -z-1 opacity-80 flex items-end justify-center"
-    style="top: auto; bottom: -27%; left: 15%;"
+    class="pointer-events-none absolute inset-0 -z-1 opacity-80 flex items-end justify-center hero-image-container"
   >
-    <div
-      class="rounded-3xl overflow-hidden"
-      style="transform: skew(15deg, -10deg) rotate(5deg);"
-    >
+    <div class="rounded-3xl overflow-hidden hero-image-wrapper">
       <img
         src="./images/ide.webp"
         alt=""
@@ -49,7 +45,6 @@
 
   <!-- Gradient overlay to fade bottom into color -->
   <div
-    class="pointer-events-none absolute inset-0 -z-0"
-    style="background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(18,20,24,0.3) 80%, rgba(18,20,24,1) 100%);"
+    class="pointer-events-none absolute inset-0 -z-0 hero-gradient-overlay"
   ></div>
 </section>
