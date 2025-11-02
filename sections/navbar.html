@@ -62,9 +62,16 @@
   (function() {
     var btn = document.getElementById('mobile-menu-button');
     var menu = document.getElementById('mobile-menu');
+    var links = document.querySelectorAll('#mobile-menu a');
 
     btn.onclick = function() {
       menu.classList.toggle('hidden');
     };
+
+    links.forEach(function(link) {
+      link.onclick = function() {
+        menu.classList.add('hidden');
+      };
+    });
   })();
 </script>
