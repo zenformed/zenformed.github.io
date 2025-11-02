@@ -37,14 +37,19 @@
   >
     <div
       class="rounded-3xl overflow-hidden"
-      style="border: 1px solid rgba(255,255,255,0.05); transform: skew(15deg, -9deg) rotate(5deg);"
+      style="transform: skew(15deg, -10deg) rotate(5deg);"
     >
       <img
         src="./images/ide.webp"
         alt=""
         class="w-[100%] h-[100%] object-contain"
-        style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%);"
       />
     </div>
   </div>
+
+  <!-- Gradient overlay to fade bottom into color -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-0"
+    style="background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(18,20,24,0.3) 80%, rgba(18,20,24,1) 100%);"
+  ></div>
 </section>
