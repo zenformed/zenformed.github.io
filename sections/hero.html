@@ -1,6 +1,6 @@
 <!-- /sections/hero.html -->
 <section
-  class="relative overflow-hidden bg-black text-white h-screen flex items-start pt-40"
+  class="relative overflow-hidden bg-gradient-radial text-white h-screen flex items-start pt-40"
 >
   <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
     <div class="flex flex-col gap-6 md:gap-8">
@@ -33,13 +33,18 @@
   <!-- Background image -->
   <div
     class="pointer-events-none absolute inset-0 -z-1 opacity-80 flex items-end justify-center"
-    style="top: auto; bottom: -25%; left: 15%;"
+    style="top: auto; bottom: -27%; left: 15%;"
   >
-    <img
-      src="./images/ide.webp"
-      alt=""
-      class="w-[100%] h-[100%] object-contain"
-      style="transform: skew(15deg, -9deg) rotate(5deg); mask-image: radial-gradient(ellipse 100% 70% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 90%); -webkit-mask-image: radial-gradient(ellipse 100% 70% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 90%);"
-    />
+    <div
+      class="rounded-3xl overflow-hidden"
+      style="border: 1px solid rgba(255,255,255,0.05); transform: skew(15deg, -9deg) rotate(5deg);"
+    >
+      <img
+        src="./images/ide.webp"
+        alt=""
+        class="w-[100%] h-[100%] object-contain"
+        style="mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%);"
+      />
+    </div>
   </div>
 </section>

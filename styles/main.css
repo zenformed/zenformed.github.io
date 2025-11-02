@@ -47,3 +47,13 @@ html {
     opacity: 1;
   }
 }
+
+/* Radial gradient for hero section */
+.bg-gradient-radial {
+  background: radial-gradient(
+    ellipse 120% 100% at center,
+    #000000 0%,
+    #121418 30%,
+    #121418 100%
+  );
+}
