@@ -55,8 +55,12 @@
       }
     </script>
   </head>
-  <body class="bg-white text-gray-900">
+  <body class="bg-white">
     <!-- Sections mount points -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10"
+    ></nav>
     <header id="hero"></header>
     <main>
       <div id="about"></div>
@@ -70,6 +74,7 @@
 
       // Wait for DOM to be fully loaded before calling
       document.addEventListener('DOMContentLoaded', () => {
+        loadSection('#navbar', './sections/navbar.html');
         loadSection('#hero', './sections/hero.html');
         loadSection('#about', './sections/about.html');
         loadSection('#services', './sections/services.html');

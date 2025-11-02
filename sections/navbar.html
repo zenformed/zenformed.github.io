@@ -1,0 +1,70 @@
+<!-- /sections/navbar.html -->
+<div class="max-w-6xl mx-auto px-6">
+  <div class="flex items-center justify-between h-16">
+    <!-- Logo and Brand Name -->
+    <a
+      href="#hero"
+      class="flex items-baseline gap-3 hover:opacity-80 transition-opacity"
+    >
+      <img src="./images/zenformed.webp" alt="Zenformed logo" class="h-6 w-6" />
+      <span class="text-2xl tracking-wide lowercase text-white">zenformed</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="text-white hover:text-gray-300 transition-colors"
+        >About</a
+      >
+      <a
+        href="#services"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Services</a
+      >
+      <a
+        href="#contact"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Contact</a
+      >
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button" class="md:hidden text-white p-2">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Dropdown Menu -->
+<div
+  id="mobile-menu"
+  class="hidden md:hidden fixed top-16 left-0 right-0 h-[calc(100vh-4rem)] bg-black/95 backdrop-blur-[50px] border-t border-white/10"
+>
+  <div class="px-6 py-4 space-y-4">
+    <a href="#about" class="block text-white text-3xl">About</a>
+    <a href="#services" class="block text-white text-3xl">Services</a>
+    <a href="#contact" class="block text-white text-3xl">Contact</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-button');
+    var menu = document.getElementById('mobile-menu');
+
+    btn.onclick = function() {
+      menu.classList.toggle('hidden');
+    };
+  })();
+</script>
