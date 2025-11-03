@@ -114,6 +114,12 @@ nav#navbar a:not([class*="logo"]):hover {
   height: 90%;
 }
 
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Hero gradient overlay */
 .hero-gradient-overlay {
   background: linear-gradient(
@@ -123,6 +129,10 @@ nav#navbar a:not([class*="logo"]):hover {
     rgba(18, 20, 24, 0.3) 80%,
     rgba(18, 20, 24, 1) 100%
   );
+}
+
+.mobile-hero-image-wrapper {
+  display: none !important;
 }
 
 /* ============================================================
@@ -196,9 +206,56 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 }
 
+.mobile-hero-image-wrapper {
+  display: none !important;
+}
 /* ============================================================
    MOBILE RESPONSIVE STYLES (below 768px)
    ============================================================ */
 @media (max-width: 767px) {
-  /* Mobile hero styles go here when needed */
+  /* Mobile navbar - full width with padding */
+  .navbar-wrapper .content-container {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Mobile hero - fix content container width */
+  .hero-section .content-container {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .hero-section {
+    padding-top: 120px !important;
+    max-width: 100vw !important;
+  }
+  .hero-title {
+    max-width: 100% !important;
+    font-size: 2rem !important;
+    max-height: 200px !important;
+  }
+
+  .hero-subtitle {
+    width: 100% !important;
+    font-size: 1.25rem !important;
+    padding: 20px 0px !important;
+  }
+  .hero-image-container {
+    display: none !important;
+  }
+  .hero-image-wrapper {
+    padding-top: 45px !important;
+    width: 190% !important;
+    height: 190% !important;
+  }
+  .mobile-hero-image-wrapper {
+    display: block !important;
+  }
+  .hero-content {
+    gap: 0rem !important;
+  }
 }
