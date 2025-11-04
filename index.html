@@ -39,6 +39,9 @@
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles/main.css" />
 
@@ -69,17 +72,30 @@
     </main>
     <footer id="contact"></footer>
 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <!-- Loader util -->
     <script type="module">
       import { loadSection } from './js/sections.js';
 
       // Wait for DOM to be fully loaded before calling
-      document.addEventListener('DOMContentLoaded', () => {
-        loadSection('#navbar', './sections/navbar.html');
-        loadSection('#hero', './sections/hero.html');
-        loadSection('#about', './sections/about.html');
-        loadSection('#services', './sections/services.html');
-        loadSection('#contact', './sections/contact.html');
+      document.addEventListener('DOMContentLoaded', async () => {
+        // Initialize AOS
+        AOS.init({
+          duration: 600,
+          easing: 'ease-out',
+          once: true,
+        });
+
+        await loadSection('#navbar', './sections/navbar.html');
+        await loadSection('#hero', './sections/hero.html');
+        await loadSection('#about', './sections/about.html');
+        await loadSection('#services', './sections/services.html');
+        await loadSection('#contact', './sections/contact.html');
+
+        // Refresh AOS after all sections are loaded to detect new elements
+        AOS.refresh();
       });
     </script>
   </body>

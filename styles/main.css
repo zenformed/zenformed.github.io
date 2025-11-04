@@ -173,9 +173,51 @@ nav#navbar a:not([class*="logo"]):hover {
   position: relative;
 }
 
-.about-image img {
+.about-image > img:not(.about-overlay) {
+  border-radius: 0.75rem;
   margin: 0 auto;
   object-fit: contain;
+  box-shadow: 0 0 7px 0 rgb(88, 88, 88);
+}
+
+/* About overlay images - positioned on top of about_main.webp */
+.about-overlay {
+  position: absolute;
+  width: auto;
+  height: auto;
+  max-width: 30%;
+  z-index: 10;
+}
+
+/* Position 1: Upper-left quadrant (above "Sales Overview" tab, left of main graph) */
+.about-overlay-1 {
+  top: 2%;
+  left: 1%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Position 2: Upper-center to upper-right (above peak of graph, left of metrics) */
+.about-overlay-2 {
+  top: 2%;
+  left: 35%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Position 3: Upper-right quadrant (above "TRANSACTIONS" and "DAILY AVG" metrics) */
+.about-overlay-3 {
+  top: 2%;
+  right: 1%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Chart image - positioned below the three overlay images, centered */
+.about-overlay-chart {
+  top: 27%;
+  left: 1%;
+  transform: translateX(-50%);
+  min-width: 98%;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Hero gradient overlay */
