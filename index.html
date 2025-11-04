@@ -84,14 +84,22 @@
       content="https://zenformed.com/images/zenformed.webp"
     />
 
-    <!-- Tailwind via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- AOS (Animate On Scroll) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <!-- Custom Styles -->
+    <!-- Custom Styles - Load first -->
     <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Tailwind via CDN - Defer to avoid render blocking -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <!-- AOS (Animate On Scroll) - Load CSS asynchronously -->
+    <link
+      rel="preload"
+      href="https://unpkg.com/aos@next/dist/aos.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </noscript>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -162,8 +170,8 @@
     </main>
     <footer id="contact"></footer>
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- AOS JS - Defer to avoid render blocking -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
 
     <!-- Loader util -->
     <script type="module">
