@@ -132,7 +132,7 @@ nav#navbar a:not([class*="logo"]):hover {
   flex-direction: column;
   gap: 4rem;
   margin-top: 0px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .about-title {
@@ -164,19 +164,15 @@ nav#navbar a:not([class*="logo"]):hover {
 
 .about-image {
   margin: 0 auto;
-  margin-top: 40px;
-  max-width: 65%;
-  aspect-ratio: 16 / 9;
+  margin-top: 20px;
+  width: 65%;
+  aspect-ratio: 21 / 9;
   border-radius: 0.75rem;
-  transform: perspective(500px) rotateX(25deg);
+  transform: perspective(700px) rotateX(35deg);
   transform-origin: top center;
   position: relative;
-}
-
-.about-image > img:not(.about-overlay) {
-  border-radius: 0.75rem;
-  margin: 0 auto;
-  object-fit: contain;
+  background-color: #1a1d24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 7px 0 rgb(88, 88, 88);
 }
 
@@ -185,37 +181,37 @@ nav#navbar a:not([class*="logo"]):hover {
   position: absolute;
   width: auto;
   height: auto;
-  max-width: 30%;
+  max-width: 28%;
   z-index: 10;
 }
 
 /* Position 1: Upper-left quadrant (above "Sales Overview" tab, left of main graph) */
 .about-overlay-1 {
-  top: 2%;
-  left: 1%;
+  top: 1%;
+  left: 1.5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Position 2: Upper-center to upper-right (above peak of graph, left of metrics) */
 .about-overlay-2 {
-  top: 2%;
+  top: 1%;
   left: 35%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Position 3: Upper-right quadrant (above "TRANSACTIONS" and "DAILY AVG" metrics) */
 .about-overlay-3 {
-  top: 2%;
-  right: 1%;
+  top: 1%;
+  right: 1.5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Chart image - positioned below the three overlay images, centered */
 .about-overlay-chart {
-  top: 27%;
-  left: 1%;
+  top: 32%;
+  left: 1.5%;
   transform: translateX(-50%);
-  min-width: 98%;
+  min-width: 97%;
   object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
@@ -305,12 +301,8 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .about-image {
-    max-width: 100% !important;
-    margin-top: 100px !important;
-  }
-
-  .about-image img {
-    max-height: 60% !important;
+    margin-top: 60px !important;
+    transform: perspective(1000px) rotateX(30deg);
   }
 
   .hero-image-container {
@@ -357,7 +349,7 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .about-image {
-    max-width: 100% !important;
+    width: 100% !important;
     margin-top: 40px !important;
   }
 
