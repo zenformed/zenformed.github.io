@@ -170,48 +170,36 @@ nav#navbar a:not([class*="logo"]):hover {
   border-radius: 0.25rem;
   transform: perspective(700px) rotateX(35deg);
   transform-origin: top center;
-  position: relative;
   background-color: #1a1d24;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 7px 0 rgb(88, 88, 88);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-/* About overlay images - positioned on top of about_main.webp */
-.about-overlay {
-  position: absolute;
-  width: auto;
+/* Top row container for the 3 small images */
+.about-overlay-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Individual overlay items (the 3 small images) */
+.about-overlay-item {
+  flex: 1;
+  max-width: 30%;
   height: auto;
-  max-width: 28%;
-  z-index: 10;
-}
-
-/* Position 1: Upper-left quadrant (above "Sales Overview" tab, left of main graph) */
-.about-overlay-1 {
-  top: 1%;
-  left: 1.5%;
+  object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Position 2: Upper-center to upper-right (above peak of graph, left of metrics) */
-.about-overlay-2 {
-  top: 1%;
-  left: 35%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* Position 3: Upper-right quadrant (above "TRANSACTIONS" and "DAILY AVG" metrics) */
-.about-overlay-3 {
-  top: 1%;
-  right: 1.5%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* Chart image - positioned below the three overlay images, centered */
+/* Chart image below */
 .about-overlay-chart {
-  top: 32%;
-  left: 1.5%;
-  transform: translateX(-50%);
-  min-width: 97%;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
@@ -302,7 +290,8 @@ nav#navbar a:not([class*="logo"]):hover {
 
   .about-image {
     margin-top: 60px !important;
-    transform: perspective(1000px) rotateX(30deg);
+    transform: perspective(1000px) rotateX(25deg) !important;
+    width: 70% !important;
   }
 
   .hero-image-container {
@@ -353,16 +342,16 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .about-image {
-    overflow: hidden !important;
+    overflow-x: hidden !important;
     margin-top: 20px !important;
-    transform: perspective(100px) rotateX(10deg);
-    width: 82% !important;
+    transform: perspective(100px) rotateX(10deg) !important;
+    width: 75% !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem !important;
   }
 
-  .about-overlay-chart {
-    min-width: 96% !important;
-    left: 2% !important;
-    top: 32% !important;
+  .about-overlay-top {
+    gap: 0rem !important;
   }
 
   .hero-section {
