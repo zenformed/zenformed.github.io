@@ -167,7 +167,7 @@ nav#navbar a:not([class*="logo"]):hover {
   margin-top: 20px;
   width: 65%;
   aspect-ratio: 21 / 9;
-  border-radius: 0.75rem;
+  border-radius: 0.25rem;
   transform: perspective(700px) rotateX(35deg);
   transform-origin: top center;
   position: relative;
@@ -348,20 +348,21 @@ nav#navbar a:not([class*="logo"]):hover {
     margin-right: 0 !important;
   }
 
-  .about-image {
-    width: 100% !important;
-    margin-top: 40px !important;
-  }
-
   .about-content {
     gap: 2rem !important;
   }
-  .about-image img {
-    max-height: 60% !important;
-  }
 
   .about-image {
-    transform: perspective(300px) rotateX(30deg) !important;
+    overflow: hidden !important;
+    margin-top: 20px !important;
+    transform: perspective(100px) rotateX(10deg);
+    width: 82% !important;
+  }
+
+  .about-overlay-chart {
+    min-width: 96% !important;
+    left: 2% !important;
+    top: 32% !important;
   }
 
   .hero-section {
