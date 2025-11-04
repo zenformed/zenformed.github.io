@@ -28,12 +28,19 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" class="md:hidden text-white p-2">
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-white p-2"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       <svg
         class="w-6 h-6"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
+        aria-hidden="true"
       >
         <path
           stroke-linecap="round"
@@ -50,11 +57,16 @@
 <div
   id="mobile-menu"
   class="hidden md:hidden fixed top-16 left-0 right-0 h-[calc(100vh-4rem)] bg-black/95 backdrop-blur-[50px] border-t border-white/10"
+  role="menu"
 >
   <div class="px-6 py-4 space-y-4">
-    <a href="#about" class="block text-white text-3xl">About</a>
-    <a href="#services" class="block text-white text-3xl">Services</a>
-    <a href="#contact" class="block text-white text-3xl">Contact</a>
+    <a href="#about" class="block text-white text-3xl" role="menuitem">About</a>
+    <a href="#services" class="block text-white text-3xl" role="menuitem"
+      >Services</a
+    >
+    <a href="#contact" class="block text-white text-3xl" role="menuitem"
+      >Contact</a
+    >
   </div>
 </div>
 
@@ -64,13 +76,18 @@
     var menu = document.getElementById('mobile-menu');
     var links = document.querySelectorAll('#mobile-menu a');
 
-    btn.onclick = function() {
+    function toggleMenu() {
+      var isHidden = menu.classList.contains('hidden');
       menu.classList.toggle('hidden');
-    };
+      btn.setAttribute('aria-expanded', !isHidden);
+    }
+
+    btn.onclick = toggleMenu;
 
     links.forEach(function(link) {
       link.onclick = function() {
         menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
       };
     });
   })();
