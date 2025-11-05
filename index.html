@@ -176,6 +176,7 @@
     <!-- Loader util -->
     <script type="module">
       import { loadSection } from './js/sections.js';
+      import { initHeroAnimations } from './js/hero-animations.js';
 
       // Wait for DOM to be fully loaded before calling
       document.addEventListener('DOMContentLoaded', async () => {
@@ -188,6 +189,10 @@
 
         await loadSection('#navbar', './sections/navbar.html');
         await loadSection('#hero', './sections/hero.html');
+
+        // Initialize hero animations after hero section is loaded
+        initHeroAnimations();
+
         await loadSection('#about', './sections/about.html');
         await loadSection('#services', './sections/services.html');
         await loadSection('#contact', './sections/contact.html');

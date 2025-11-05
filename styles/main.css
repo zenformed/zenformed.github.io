@@ -127,11 +127,30 @@ nav#navbar a:not([class*="logo"]):hover {
   display: flex;
   flex-direction: column;
   gap: 1.5rem; /* 24px */
+  align-items: flex-start; /* Left align content */
+  width: 100%;
 }
 
 /* Hero title - large heading */
 .hero-title {
   font-size: 3.75rem !important; /* 60px */
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* Ensure hero title spans have no extra spacing */
+.hero-title span {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+/* Hero subtitle and buttons - initially hidden for animation */
+.hero-subtitle,
+.hero-buttons {
+  opacity: 0;
 }
 
 /* Hero image container - positioned at bottom-left */
@@ -270,13 +289,12 @@ nav#navbar a:not([class*="logo"]):hover {
 
 /* Services description */
 .services-description {
+  min-width: 50%;
   font-size: 1.125rem; /* 18px */
   color: rgba(255, 255, 255, 0.6);
   max-width: 42rem; /* 672px */
   margin-bottom: 4rem; /* 64px */
   text-align: start;
-  margin-left: 0;
-  margin-right: auto;
 }
 
 /* Services grid - 3 columns */
