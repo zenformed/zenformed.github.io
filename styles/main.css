@@ -350,6 +350,106 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 /* ============================================================
+   CONTACT SECTION STYLES - Base (1920px)
+   ============================================================ */
+
+/* Contact content wrapper */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 48px */
+  width: 100%;
+  align-items: center;
+}
+
+/* Contact header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Contact title */
+.contact-title {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 600;
+  margin-bottom: 1rem; /* 16px */
+  color: white;
+}
+
+/* Contact subtitle */
+.contact-subtitle {
+  font-size: 1.125rem; /* 18px */
+  color: rgb(156, 163, 175); /* gray-400 */
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+  width: 100%;
+  max-width: 32rem; /* 512px - reasonable width for form */
+}
+
+/* Contact form group */
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* Contact label */
+.contact-label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: white;
+}
+
+/* Contact input */
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem; /* 12px 16px */
+  border-radius: 0.375rem; /* 6px */
+  border: 1px solid rgb(209, 213, 219); /* gray-300 */
+  background-color: white;
+  color: black;
+  font-size: 1rem; /* 16px */
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: none;
+  border-color: black;
+}
+
+/* Contact textarea */
+.contact-textarea {
+  resize: vertical;
+  min-height: 9rem; /* 144px */
+}
+
+/* Contact button */
+.contact-button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  border-radius: 0.375rem; /* 6px */
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.contact-button:hover {
+  opacity: 0.9;
+}
+
+/* ============================================================
    RESPONSIVE: TABLET & UP (768px and above)
    ============================================================ */
 
@@ -367,6 +467,11 @@ nav#navbar a:not([class*="logo"]):hover {
   /* Services section - 3 column grid on tablet+ */
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Contact section - larger title on tablet+ */
+  .contact-title {
+    font-size: 3rem; /* 48px */
   }
 }
 
@@ -512,6 +617,45 @@ nav#navbar a:not([class*="logo"]):hover {
   .services-card-text {
     font-size: 1.75rem !important; /* 28px */
   }
+
+  /* Contact section - larger typography on 4K */
+  .contact-title {
+    font-size: 5rem !important; /* 80px */
+  }
+
+  .contact-subtitle {
+    font-size: 2.25rem !important; /* 36px */
+  }
+
+  .contact-content {
+    gap: 4rem !important; /* 64px */
+    width: 100% !important;
+  }
+
+  .contact-form {
+    gap: 2rem !important; /* 32px */
+    width: 100% !important;
+    max-width: 48rem !important; /* 768px - larger for 4K but still reasonable */
+  }
+
+  .contact-label {
+    font-size: 1.5rem !important; /* 24px */
+  }
+
+  .contact-input,
+  .contact-textarea {
+    padding: 1.25rem 1.5rem !important; /* 20px 24px */
+    font-size: 1.75rem !important; /* 28px */
+  }
+
+  .contact-textarea {
+    min-height: 12rem !important; /* 192px */
+  }
+
+  .contact-button {
+    padding: 1.25rem 2rem !important; /* 20px 32px */
+    font-size: 1.75rem !important; /* 28px */
+  }
 }
 
 /* ============================================================
@@ -523,7 +667,8 @@ nav#navbar a:not([class*="logo"]):hover {
   .navbar-wrapper .content-container,
   .hero-section .content-container,
   .about-section .content-container,
-  .services-section .content-container {
+  .services-section .content-container,
+  .contact-section .content-container {
     max-width: 100% !important;
     min-width: 100% !important;
     margin-left: 0 !important;
@@ -641,6 +786,44 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .services-card-text {
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  /* Contact section - mobile adjustments */
+  .contact-title {
+    font-size: 1.75rem !important; /* 28px */
+  }
+
+  .contact-subtitle {
+    font-size: 1rem !important; /* 16px */
+  }
+
+  .contact-content {
+    gap: 2rem !important; /* 32px */
+    max-width: 100% !important;
+  }
+
+  .contact-form {
+    gap: 1.25rem !important; /* 20px */
+    max-width: 100% !important;
+  }
+
+  .contact-label {
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  .contact-input,
+  .contact-textarea {
+    padding: 0.625rem 0.875rem !important; /* 10px 14px */
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  .contact-textarea {
+    min-height: 8rem !important; /* 128px */
+  }
+
+  .contact-button {
+    padding: 0.625rem 1.25rem !important; /* 10px 20px */
     font-size: 0.875rem !important; /* 14px */
   }
 }

@@ -1,50 +1,44 @@
 <!-- /sections/contact.html -->
-<section class="bg-gradient-radial h-screen flex items-center" id="contact">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-white">
-        Ready to start?
-      </h2>
-      <p class="text-lg text-gray-600 text-gray-400">
-        Let's build something great together.
-      </p>
+<section
+  class="bg-gradient-radial text-white h-screen flex items-center contact-section"
+  id="contact"
+>
+  <div class="content-container">
+    <div class="contact-content">
+      <div class="contact-header">
+        <h2 class="contact-title">Ready to start?</h2>
+        <p class="contact-subtitle">Let's build something great together.</p>
+      </div>
+      <form class="contact-form">
+        <div class="contact-form-group">
+          <label for="name" class="contact-label">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="contact-input"
+            placeholder="Your name"
+          />
+        </div>
+        <div class="contact-form-group">
+          <label for="email" class="contact-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="contact-input"
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="contact-form-group">
+          <label for="message" class="contact-label">Message</label>
+          <textarea
+            id="message"
+            rows="6"
+            class="contact-textarea"
+            placeholder="Tell us about your project..."
+          ></textarea>
+        </div>
+        <button type="submit" class="contact-button">Send message</button>
+      </form>
     </div>
-    <form class="max-w-xl mx-auto space-y-6">
-      <div>
-        <label for="name" class="block text-sm font-medium mb-2">Name</label>
-        <input
-          type="text"
-          id="name"
-          class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-black focus:outline-none bg-white text-black"
-          placeholder="Your name"
-        />
-      </div>
-      <div>
-        <label for="email" class="block text-sm font-medium mb-2">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-black focus:outline-none bg-white text-black"
-          placeholder="you@example.com"
-        />
-      </div>
-      <div>
-        <label for="message" class="block text-sm font-medium mb-2"
-          >Message</label
-        >
-        <textarea
-          id="message"
-          rows="6"
-          class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-black focus:outline-none bg-white text-black"
-          placeholder="Tell us about your project..."
-        ></textarea>
-      </div>
-      <button
-        type="submit"
-        class="w-full inline-flex items-center justify-center px-6 py-3 rounded-md bg-black text-white hover:opacity-90 font-medium border-white border"
-      >
-        Send message
-      </button>
-    </form>
   </div>
 </section>
