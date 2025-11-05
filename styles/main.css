@@ -237,6 +237,119 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 /* ============================================================
+   SERVICES SECTION STYLES - Base (1920px)
+   ============================================================ */
+
+/* Services section - background and full height */
+/* Services content wrapper */
+.services-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: visible;
+}
+
+/* Services label - "Capabilities" */
+.services-label {
+  font-size: 0.875rem; /* 14px */
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem; /* 8px */
+  text-align: start;
+}
+
+/* Services title */
+.services-title {
+  font-size: 3rem; /* 48px */
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* 24px */
+  text-align: start;
+  color: white;
+}
+
+/* Services description */
+.services-description {
+  font-size: 1.125rem; /* 18px */
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 42rem; /* 672px */
+  margin-bottom: 4rem; /* 64px */
+  text-align: start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Services grid - 3 columns */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem; /* 32px */
+  overflow: visible;
+}
+
+/* Services card */
+.services-card {
+  padding-top: 0.5rem; /* 8px */
+  padding-bottom: 0.5rem; /* 8px */
+  padding-left: 0; /* No left padding to allow images to extend */
+  padding-right: 0; /* No right padding */
+  border-radius: 0.75rem; /* 12px */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  overflow-x: visible;
+}
+
+.services-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Services icon */
+.services-icon {
+  font-size: 1.5rem; /* 24px */
+  margin-bottom: 0.75rem; /* 12px */
+}
+
+/* Services image */
+.services-image {
+  flex-shrink: 0;
+  display: block;
+  width: 120px; /* Adjust as needed */
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.services-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Services card content wrapper */
+.services-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Services card title */
+.services-card-title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  margin-bottom: 0.5rem; /* 8px */
+  color: white;
+}
+
+/* Services card text */
+.services-card-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem; /* 16px */
+}
+
+/* ============================================================
    RESPONSIVE: TABLET & UP (768px and above)
    ============================================================ */
 
@@ -249,6 +362,11 @@ nav#navbar a:not([class*="logo"]):hover {
   /* About section paragraphs - same size on tablet+ */
   .about-paragraph {
     font-size: 1.125rem; /* 18px */
+  }
+
+  /* Services section - 3 column grid on tablet+ */
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -335,6 +453,65 @@ nav#navbar a:not([class*="logo"]):hover {
     transform: perspective(1000px) rotateX(25deg) !important;
     width: 70% !important;
   }
+
+  /* Services section - larger typography and spacing on 4K */
+
+  .services-label {
+    font-size: 1.5rem !important; /* 24px */
+    margin-bottom: 1rem !important; /* 16px */
+  }
+
+  .services-title {
+    font-size: 5rem !important; /* 80px */
+    margin-bottom: 2rem !important; /* 32px */
+  }
+
+  .services-description {
+    font-size: 2.25rem !important; /* 36px */
+    max-width: 56rem !important; /* 896px */
+    margin-bottom: 6rem !important; /* 96px */
+  }
+
+  .services-grid {
+    gap: 3rem !important; /* 48px */
+  }
+
+  .services-card {
+    padding-top: 2.5rem !important; /* 40px */
+    padding-bottom: 2.5rem !important; /* 40px */
+    padding-left: 0 !important; /* No left padding to allow images to extend */
+    padding-right: 0 !important; /* No right padding */
+    border-radius: 1rem !important; /* 16px */
+  }
+
+  .services-icon {
+    font-size: 3rem !important; /* 48px */
+    margin-bottom: 1.5rem !important; /* 24px */
+  }
+
+  .services-image {
+    width: 200px !important; /* Adjust as needed for 4K */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .services-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .services-card {
+    gap: 2rem !important; /* 32px */
+  }
+
+  .services-card-title {
+    font-size: 2.25rem !important; /* 36px */
+    margin-bottom: 1rem !important; /* 16px */
+  }
+
+  .services-card-text {
+    font-size: 1.75rem !important; /* 28px */
+  }
 }
 
 /* ============================================================
@@ -345,7 +522,8 @@ nav#navbar a:not([class*="logo"]):hover {
   /* Content container - full width on mobile for all sections */
   .navbar-wrapper .content-container,
   .hero-section .content-container,
-  .about-section .content-container {
+  .about-section .content-container,
+  .services-section .content-container {
     max-width: 100% !important;
     min-width: 100% !important;
     margin-left: 0 !important;
@@ -405,5 +583,64 @@ nav#navbar a:not([class*="logo"]):hover {
 
   .about-overlay-top {
     gap: 0rem !important;
+  }
+
+  /* Services section - mobile adjustments */
+
+  .services-label {
+    font-size: 0.75rem !important; /* 12px */
+    margin-bottom: 0.5rem !important; /* 8px */
+  }
+
+  .services-title {
+    font-size: 1.5rem !important; /* 24px */
+    margin-bottom: 1rem !important; /* 16px */
+  }
+
+  .services-description {
+    font-size: 1rem !important; /* 16px */
+    max-width: 100% !important;
+    margin-bottom: 2rem !important; /* 32px */
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important; /* 24px */
+  }
+
+  .services-card {
+    padding-top: 1.25rem !important; /* 20px */
+    padding-bottom: 1.25rem !important; /* 20px */
+    padding-left: 0 !important; /* No left padding to allow images to extend */
+    padding-right: 0 !important; /* No right padding */
+  }
+
+  .services-icon {
+    font-size: 1.25rem !important; /* 20px */
+    margin-bottom: 0.5rem !important; /* 8px */
+  }
+
+  .services-image {
+    width: 80px !important; /* Adjust as needed for mobile */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .services-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .services-card {
+    gap: 1rem !important; /* 16px */
+  }
+
+  .services-card-title {
+    font-size: 1.125rem !important; /* 18px */
+    margin-bottom: 0.5rem !important; /* 8px */
+  }
+
+  .services-card-text {
+    font-size: 0.875rem !important; /* 14px */
   }
 }
