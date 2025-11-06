@@ -11,6 +11,9 @@ export async function loadSection(selector, url) {
     const scripts = mount.querySelectorAll("script");
     scripts.forEach((oldScript) => {
       const newScript = document.createElement("script");
+      if (oldScript.type) {
+        newScript.type = oldScript.type;
+      }
       if (oldScript.src) {
         newScript.src = oldScript.src;
       } else {

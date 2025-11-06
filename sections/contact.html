@@ -9,36 +9,75 @@
         <h2 class="contact-title">Ready to start?</h2>
         <p class="contact-subtitle">Let's build something great together.</p>
       </div>
-      <form class="contact-form">
+
+      <!-- Connected form -->
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/dhenderson@zenformed.com"
+        method="POST"
+      >
         <div class="contact-form-group">
           <label for="name" class="contact-label">Name</label>
           <input
             type="text"
             id="name"
+            name="name"
             class="contact-input"
             placeholder="Your name"
+            required
           />
         </div>
+
         <div class="contact-form-group">
           <label for="email" class="contact-label">Email</label>
           <input
             type="email"
             id="email"
+            name="email"
             class="contact-input"
             placeholder="you@example.com"
+            required
           />
         </div>
+
+        <div class="contact-form-group">
+          <label for="phone" class="contact-label">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="contact-input"
+            placeholder="(555) 123-4567"
+          />
+        </div>
+
         <div class="contact-form-group">
           <label for="message" class="contact-label">Message</label>
           <textarea
             id="message"
+            name="message"
             rows="6"
             class="contact-textarea"
             placeholder="Tell us about your project..."
+            required
           ></textarea>
         </div>
+
         <button type="submit" class="contact-button">Send message</button>
+
+        <!-- Hidden configuration fields -->
+        <input
+          type="hidden"
+          name="_subject"
+          value="New message from Zenformed.com"
+        />
+        <input type="hidden" name="_captcha" value="false" />
       </form>
     </div>
   </div>
 </section>
+
+<script type="module">
+  import { initContactForm } from '../js/contact-form.js';
+  initContactForm();
+</script>
