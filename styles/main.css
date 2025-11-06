@@ -387,6 +387,7 @@ nav#navbar a:not([class*="logo"]):hover {
 /* Services card content wrapper */
 .services-card-content {
   flex: 1;
+  padding: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -506,6 +507,169 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 /* ============================================================
+   CUSTOMERS SECTION STYLES - Base (1920px)
+   ============================================================ */
+
+/* Customers content wrapper */
+.customers-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Customers label */
+.customers-label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.75rem; /* 12px */
+  text-align: start;
+}
+
+/* Customers title */
+.customers-title {
+  font-size: 3rem; /* 48px */
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* 24px */
+  text-align: start;
+  color: white;
+}
+
+/* Customers description */
+.customers-description {
+  min-width: 50%;
+  font-size: 1.125rem; /* 18px */
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 42rem; /* 672px */
+  margin-bottom: 4rem; /* 64px */
+  text-align: start;
+}
+
+/* Customers grid - 3 columns */
+.customers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem; /* 32px */
+  overflow: visible;
+}
+
+/* Customers card */
+.customers-card {
+  padding: 1.5rem; /* 24px */
+  border-radius: 0.75rem; /* 12px */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 16px */
+  position: relative;
+  overflow: hidden;
+}
+
+.customers-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Faded background icon */
+.customers-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -170px;
+  width: 400px;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: -50px -50px;
+  opacity: 0.15;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.customers-card:nth-child(1)::before {
+  background-image: url("../images/zombielynx.webp");
+}
+
+.customers-card:nth-child(2)::before {
+  background-image: url("../images/brandedtattoo.webp");
+}
+
+.customers-card:nth-child(3)::before {
+  background-image: url("../images/neurapalai.webp");
+}
+
+.customers-card:nth-child(4)::before {
+  background-image: url("../images/7prime.webp");
+}
+
+/* Customers card header - icon and title side by side */
+.customers-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 16px */
+  position: relative;
+  z-index: 1;
+}
+
+/* Customers image */
+.customers-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: #1a1a1a; /* Slightly darker gray background */
+  border-radius: 0.5rem; /* 8px */
+}
+
+.customers-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Customers card title */
+.customers-card-title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+/* Customers card text */
+.customers-card-text {
+  font-size: 1.75rem; /* 28px - doubled from 14px */
+  color: white;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Customers card link */
+.customers-card-link {
+  font-size: 0.875rem; /* 14px */
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.customers-card-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ============================================================
    RESPONSIVE: TABLET & UP (768px and above)
    ============================================================ */
 
@@ -541,6 +705,26 @@ nav#navbar a:not([class*="logo"]):hover {
   /* Contact section - larger title on tablet+ */
   .contact-title {
     font-size: 3rem; /* 48px */
+  }
+
+  /* Customers section - 2 column grid on tablet+ */
+  .customers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Customers title - larger on tablet+ */
+  .customers-title {
+    font-size: 3rem; /* 48px */
+  }
+
+  /* Customers label - same size on tablet+ */
+  .customers-label {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  /* Customers description - same size on tablet+ */
+  .customers-description {
+    font-size: 1.125rem; /* 18px */
   }
 }
 
@@ -746,6 +930,58 @@ nav#navbar a:not([class*="logo"]):hover {
     padding: 1.25rem 2rem !important; /* 20px 32px */
     font-size: 1.75rem !important; /* 28px */
   }
+
+  /* Customers section - larger typography on 4K */
+  .customers-label {
+    font-size: 1.5rem !important; /* 24px */
+  }
+
+  .customers-title {
+    font-size: 5rem !important; /* 80px */
+  }
+
+  .customers-description {
+    font-size: 2.25rem !important; /* 36px */
+  }
+
+  .customers-grid {
+    gap: 3rem !important; /* 48px */
+  }
+
+  .customers-card {
+    padding: 2.5rem !important; /* 40px */
+    gap: 1.5rem !important; /* 24px */
+  }
+
+  .customers-card-header {
+    gap: 1.5rem !important; /* 24px */
+  }
+
+  .customers-image {
+    width: 120px !important;
+    height: 120px !important;
+    overflow: hidden !important;
+  }
+
+  .customers-card-title {
+    font-size: 2.25rem !important; /* 36px */
+  }
+
+  .customers-card-text {
+    font-size: 3.5rem !important; /* 56px - doubled from 28px */
+  }
+
+  .customers-card::before {
+    width: 700px !important;
+    height: 700px !important;
+    top: -150px !important;
+    right: -150px !important;
+    background-position: top right !important;
+  }
+
+  .customers-card-link {
+    font-size: 1.5rem !important; /* 24px */
+  }
 }
 
 /* ============================================================
@@ -758,6 +994,7 @@ nav#navbar a:not([class*="logo"]):hover {
   .hero-section .content-container,
   .about-section .content-container,
   .services-section .content-container,
+  .customers-section .content-container,
   .contact-section .content-container {
     max-width: 100% !important;
     min-width: 100% !important;
@@ -949,6 +1186,52 @@ nav#navbar a:not([class*="logo"]):hover {
 
   .contact-button {
     padding: 0.625rem 1.25rem !important; /* 10px 20px */
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  /* Customers section - mobile adjustments */
+  .customers-label {
+    font-size: 0.75rem !important; /* 12px */
+  }
+
+  .customers-title {
+    font-size: 1.75rem !important; /* 28px */
+  }
+
+  .customers-description {
+    font-size: 0.875rem !important; /* 14px */
+    margin-bottom: 2rem !important; /* 32px */
+  }
+
+  .customers-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important; /* 24px */
+  }
+
+  .customers-card {
+    padding: 1.25rem !important; /* 20px */
+    gap: 0.75rem !important; /* 12px */
+  }
+
+  .customers-card-header {
+    gap: 0.75rem !important; /* 12px */
+  }
+
+  .customers-image {
+    width: 50px !important;
+    height: 50px !important;
+    overflow: hidden !important;
+  }
+
+  .customers-card-title {
+    font-size: 1.125rem !important; /* 18px */
+  }
+
+  .customers-card-text {
+    font-size: 1.75rem !important; /* 28px - doubled from 14px */
+  }
+
+  .customers-card-link {
     font-size: 0.875rem !important; /* 14px */
   }
 }
