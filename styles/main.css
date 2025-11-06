@@ -187,7 +187,7 @@ nav#navbar a:not([class*="logo"]):hover {
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 4rem; /* 64px */
+  gap: 2rem; /* 32px - reduced to fit trusted section */
   margin-top: 0;
   overflow: visible;
 }
@@ -215,7 +215,7 @@ nav#navbar a:not([class*="logo"]):hover {
 /* About image container - 3D perspective with background */
 .about-image {
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px; /* Reduced from 20px to make room for trusted section */
   width: 65%;
   aspect-ratio: 21 / 9;
   border-radius: 0.25rem; /* 4px */
@@ -253,6 +253,44 @@ nav#navbar a:not([class*="logo"]):hover {
   height: auto;
   object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* About trusted section - logos below image */
+.about-trusted {
+  text-align: center;
+  margin-top: 4.5rem; /* 32px */
+}
+
+.about-trusted-title {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  margin-bottom: 0.5rem; /* 8px */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.about-trusted-subtitle {
+  font-size: 0.875rem; /* 14px */
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.5rem; /* 24px */
+}
+
+.about-trusted-logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem; /* 32px */
+  align-items: center;
+  justify-items: center;
+  opacity: 0.8;
+}
+
+.about-trusted-logo {
+  height: 2rem; /* 32px */
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.about-trusted-logo:hover {
+  opacity: 1;
 }
 
 /* ============================================================
@@ -482,6 +520,19 @@ nav#navbar a:not([class*="logo"]):hover {
     font-size: 1.125rem; /* 18px */
   }
 
+  /* About trusted section - tablet+ */
+  .about-trusted-title {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  .about-trusted-subtitle {
+    font-size: 1rem; /* 16px */
+  }
+
+  .about-trusted-logo {
+    height: 2.5rem; /* 40px */
+  }
+
   /* Services section - 3 column grid on tablet+ */
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -566,6 +617,9 @@ nav#navbar a:not([class*="logo"]):hover {
   .about-title {
     font-size: 4.5rem !important; /* 72px */
   }
+  .about-trusted {
+    margin-top: 15rem !important;
+  }
 
   .about-paragraph {
     font-size: 2.25rem !important; /* 36px */
@@ -575,6 +629,24 @@ nav#navbar a:not([class*="logo"]):hover {
     margin-top: 60px !important;
     transform: perspective(1000px) rotateX(25deg) !important;
     width: 70% !important;
+  }
+
+  /* About trusted section - 4K */
+  .about-trusted-title {
+    font-size: 3.5rem !important; /* 56px */
+  }
+
+  .about-trusted-subtitle {
+    font-size: 2.5rem !important; /* 40px */
+    margin-bottom: 3.5rem !important; /* 16px */
+  }
+
+  .about-trusted-logos {
+    gap: 4rem !important; /* 64px */
+  }
+
+  .about-trusted-logo {
+    height: 6rem !important; /* 96px */
   }
 
   /* Services section - larger typography and spacing on 4K */
@@ -748,6 +820,41 @@ nav#navbar a:not([class*="logo"]):hover {
     gap: 0rem !important;
   }
 
+  .about-title {
+    margin-top: 2rem !important;
+  }
+
+  /* About trusted section - mobile */
+  .about-content {
+    gap: 0.5rem !important; /* 24px - further reduced for mobile */
+  }
+
+  .about-trusted {
+    margin-top: 3rem !important; /* 16px */
+  }
+
+  .about-trusted-title {
+    padding-top: 1rem !important;
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  .about-trusted-subtitle {
+    font-size: 0.75rem !important; /* 12px */
+    margin-bottom: 1.5rem !important; /* 16px */
+  }
+
+  .about-trusted-logos {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem !important; /* 24px */
+  }
+
+  .about-trusted-logo {
+    height: 1.5rem !important; /* 24px */
+  }
+
+  .about-paragraph {
+    margin-bottom: 0.75rem !important; /* 8px */
+  }
   /* Services section - mobile adjustments */
 
   .services-label {
