@@ -1190,48 +1190,71 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   /* Customers section - mobile adjustments */
+  .customers-section {
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-top: 6rem !important; /* Added top padding to account for navbar */
+    padding-bottom: 2rem !important;
+    scroll-margin-top: 4rem !important; /* Ensures anchor links account for navbar */
+  }
+
+  .customers-content {
+    gap: 1.5rem !important; /* Reduced from 3rem */
+  }
+
   .customers-label {
-    font-size: 0.75rem !important; /* 12px */
+    font-size: 0.625rem !important; /* 10px - scaled down */
+    margin-bottom: 0.5rem !important;
   }
 
   .customers-title {
-    font-size: 1.75rem !important; /* 28px */
+    font-size: 1.25rem !important; /* 20px - scaled down */
+    margin-bottom: 0.75rem !important;
   }
 
   .customers-description {
-    font-size: 0.875rem !important; /* 14px */
-    margin-bottom: 2rem !important; /* 32px */
+    font-size: 0.75rem !important; /* 12px - scaled down */
+    margin-bottom: 1.5rem !important; /* 24px */
   }
 
   .customers-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important; /* 24px */
+    gap: 1rem !important; /* 16px - scaled down */
   }
 
   .customers-card {
-    padding: 1.25rem !important; /* 20px */
-    gap: 0.75rem !important; /* 12px */
+    padding: 1rem !important; /* 16px - scaled down */
+    gap: 0.625rem !important; /* 10px - scaled down */
   }
 
   .customers-card-header {
-    gap: 0.75rem !important; /* 12px */
+    gap: 0.625rem !important; /* 10px - scaled down */
   }
 
   .customers-image {
-    width: 50px !important;
-    height: 50px !important;
+    width: 40px !important; /* Scaled down from 60px */
+    height: 40px !important; /* Scaled down from 60px */
     overflow: hidden !important;
   }
 
   .customers-card-title {
-    font-size: 1.125rem !important; /* 18px */
+    font-size: 0.875rem !important; /* 14px - scaled down */
   }
 
   .customers-card-text {
-    font-size: 1.75rem !important; /* 28px - doubled from 14px */
+    font-size: 0.875rem !important; /* 14px - scaled down from 1.75rem */
+    line-height: 1.4 !important;
   }
 
   .customers-card-link {
-    font-size: 0.875rem !important; /* 14px */
+    font-size: 0.75rem !important; /* 12px - scaled down */
+  }
+
+  .customers-card::before {
+    width: 250px !important; /* Scaled down from 400px */
+    height: 250px !important; /* Scaled down from 400px */
+    top: -30px !important;
+    right: -80px !important;
   }
 }
