@@ -141,7 +141,7 @@ export function initHeroAnimations() {
   wrapLetters(heroTitle);
 
   // Start title animation immediately
-  animateLetters(heroTitle, 30);
+  animateLetters(heroTitle, 15);
 
   // Calculate delay for subtitle and buttons (after title animation completes)
   // Get all letter spans (nested inside word containers) and space spans
@@ -149,7 +149,7 @@ export function initHeroAnimations() {
   const titleLetters = Array.from(allSpans).filter((span) => {
     return span.parentElement.tagName === "SPAN" || span.children.length === 0;
   });
-  const titleAnimationDuration = titleLetters.length * 30;
+  const titleAnimationDuration = titleLetters.length * 15;
   const subtitleDelay = titleAnimationDuration + 200; // 200ms pause after title
 
   // Fade in subtitle
