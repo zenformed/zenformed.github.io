@@ -3,76 +3,110 @@
    ============================================================ */
 
 /* ============================================================
+   CSS VARIABLES (Design Tokens)
+   ============================================================ */
+
+:root {
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Font Sizes */
+  --text-xs: 0.625rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.75rem;
+  --text-4xl: 2rem;
+  --text-5xl: 2.25rem;
+  --text-6xl: 3rem;
+  --text-7xl: 3.75rem;
+  --text-8xl: 4.5rem;
+  --text-9xl: 5rem;
+  --text-10xl: 6rem;
+
+  /* Colors */
+  --color-white: white;
+  --color-black: black;
+  --color-gray-300: rgb(209, 213, 219);
+  --color-gray-400: rgb(156, 163, 175);
+  --color-gray-600: rgb(75, 85, 99);
+  --color-gray-light: rgb(165, 165, 165);
+  --color-bg-dark: #121418;
+  --color-bg-darker: #0a0d11;
+  --color-bg-card: #1a1d24;
+  --color-bg-card-alt: #1a1a1a;
+
+  /* Opacity Values */
+  --opacity-border: rgba(255, 255, 255, 0.1);
+  --opacity-text-light: rgba(255, 255, 255, 0.4);
+  --opacity-text-medium: rgba(255, 255, 255, 0.5);
+  --opacity-text-strong: rgba(255, 255, 255, 0.6);
+  --opacity-text-stronger: rgba(255, 255, 255, 0.8);
+  --opacity-text-strongest: rgba(255, 255, 255, 0.9);
+  --opacity-bg-card: rgba(255, 255, 255, 0.01);
+  --opacity-bg-card-hover: rgba(255, 255, 255, 0.04);
+  --opacity-logo: 0.7;
+  --opacity-logo-hover: 1;
+  --opacity-logos-container: 0.8;
+  --opacity-bg-image: 0.15;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-base: 0.3s;
+
+  /* Layout */
+  --container-max-width: 72rem;
+  --container-padding: var(--space-lg);
+}
+
+/* ============================================================
    GLOBAL STYLES
    ============================================================ */
 
-/* Typography - System font stack for consistent rendering */
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-/* Smooth scrolling and prevent horizontal overflow */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
 }
 
-/* Accessibility: Focus styles for keyboard navigation */
 :focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
-}
-
-/* Skip to main content link (hidden by default, shown on focus) */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #000;
-  color: #fff;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 100;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-
-/* Fade-in animation for content */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 /* ============================================================
    BACKGROUNDS & GRADIENTS
    ============================================================ */
 
-/* Radial gradient for hero and other sections */
 .bg-gradient-radial {
   background: radial-gradient(
     ellipse 150% 100% at center,
-    #0a0d11 0%,
-    #121418 50%,
-    #121418 100%
+    var(--color-bg-darker) 0%,
+    var(--color-bg-dark) 50%,
+    var(--color-bg-dark) 100%
   );
 }
 
-/* Hero section gradient overlay - fades bottom into background */
 .hero-gradient-overlay {
   background: linear-gradient(
     to bottom,
@@ -87,218 +121,256 @@ html {
    LAYOUT - CONTENT CONTAINER
    ============================================================ */
 
-/* Main content container - centered, 72rem max-width */
 .content-container {
-  max-width: 72rem !important;
-  min-width: 72rem !important;
+  max-width: var(--container-max-width) !important;
+  min-width: var(--container-max-width) !important;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ============================================================
+   SHARED COMPONENT PATTERNS
+   ============================================================ */
+
+.services-card,
+.customers-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--opacity-border);
+  background-color: var(--opacity-bg-card);
+  transition: background-color var(--transition-fast);
+}
+
+.services-card:hover,
+.customers-card:hover {
+  background-color: var(--opacity-bg-card-hover);
+}
+
+.services-label {
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--opacity-text-light);
+  margin-bottom: var(--space-xs);
+  text-align: start;
+}
+
+.services-title,
+.customers-title {
+  font-size: var(--text-6xl);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  text-align: start;
+  color: var(--color-white);
+}
+
+.services-description,
+.customers-description {
+  min-width: 50%;
+  font-size: var(--text-lg);
+  color: var(--opacity-text-strong);
+  max-width: 42rem;
+  margin-bottom: var(--space-3xl);
+  text-align: start;
+}
+
+.services-grid,
+.customers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  overflow: visible;
+}
+
+.services-image img,
+.customers-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ============================================================
    NAVBAR STYLES
    ============================================================ */
 
-/* Navbar brand/logo text */
 nav#navbar span {
-  font-size: 1.75rem; /* 28px */
-  color: white;
+  font-size: var(--text-3xl);
+  color: var(--color-white);
 }
 
-/* Navbar links (excluding logo) */
 nav#navbar a:not([class*="logo"]) {
-  font-size: 1.5rem; /* 24px */
-  color: rgb(165, 165, 165);
+  font-size: var(--text-2xl);
+  color: var(--color-gray-light);
 }
 
-/* Navbar links hover state */
 nav#navbar a:not([class*="logo"]):hover {
-  color: rgb(209, 213, 219); /* gray-300 */
+  color: var(--color-gray-300);
 }
 
 /* ============================================================
-   HERO SECTION STYLES - Base (1920px)
+   HERO SECTION
    ============================================================ */
 
-/* Hero content wrapper - flex column layout */
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* 24px */
-  align-items: flex-start; /* Left align content */
+  gap: var(--space-lg);
+  align-items: flex-start;
   width: 100%;
 }
 
-/* Hero title - large heading */
 .hero-title {
-  font-size: 3.75rem !important; /* 60px */
+  font-size: var(--text-7xl) !important;
   text-align: left;
   margin: 0;
   padding: 0;
   line-height: 1.2;
 }
 
-/* Ensure hero title spans have no extra spacing */
 .hero-title span {
   margin: 0;
   padding: 0;
   vertical-align: baseline;
 }
 
-/* Hero subtitle and buttons - initially hidden for animation */
 .hero-subtitle,
 .hero-buttons {
   opacity: 0;
 }
 
-/* Hero image container - positioned at bottom-left */
 .hero-image-container {
   top: auto;
   bottom: -58% !important;
   left: 15% !important;
 }
 
-/* Hero image wrapper - 3D transform for perspective effect */
 .hero-image-wrapper {
   transform: skew(15deg, -10deg) rotate(5deg);
   width: 90%;
   height: 90%;
 }
 
-/* Hero image - contained within wrapper */
 .hero-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* Mobile hero image - hidden by default */
 .mobile-hero-image-wrapper {
   display: none !important;
 }
 
 /* ============================================================
-   ABOUT SECTION STYLES
+   ABOUT SECTION
    ============================================================ */
 
-/* About content container - flex column layout */
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* 32px - reduced to fit trusted section */
+  gap: var(--space-xl);
   margin-top: 0;
   overflow: visible;
 }
 
-/* About section title */
 .about-title {
-  font-size: 1.875rem; /* 30px */
+  font-size: 1.875rem;
   font-weight: 600;
-  margin-bottom: 1rem; /* 16px */
-  color: white;
+  margin-bottom: var(--space-md);
+  color: var(--color-white);
 }
 
-/* About section paragraphs */
 .about-paragraph {
-  font-size: 1.125rem; /* 18px */
-  color: rgb(75, 85, 99); /* gray-600 */
-  margin-bottom: 1.5rem; /* 24px */
+  font-size: var(--text-lg);
+  color: var(--color-gray-600);
+  margin-bottom: var(--space-lg);
 }
 
-/* Remove margin from last paragraph */
 .about-paragraph:last-child {
   margin-bottom: 0;
 }
 
-/* About image container - 3D perspective with background */
 .about-image {
   margin: 0 auto;
-  margin-top: 10px; /* Reduced from 20px to make room for trusted section */
+  margin-top: 10px;
   width: 65%;
   aspect-ratio: 21 / 9;
-  border-radius: 0.25rem; /* 4px */
+  border-radius: var(--radius-sm);
   transform: perspective(700px) rotateX(35deg);
   transform-origin: top center;
-  background-color: #1a1d24;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--opacity-border);
   box-shadow: 0 0 7px 0 rgb(88, 88, 88);
   display: flex;
   flex-direction: column;
-  padding: 1rem; /* 16px */
-  gap: 1rem; /* 16px */
+  padding: var(--space-md);
+  gap: var(--space-md);
 }
 
-/* Top row container for the 3 small overlay images */
 .about-overlay-top {
   display: flex;
   justify-content: space-between;
-  gap: 1rem; /* 16px */
+  gap: var(--space-md);
   width: 100%;
 }
 
-/* Individual overlay items (the 3 small images) */
+.about-overlay-item,
+.about-overlay-chart {
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 .about-overlay-item {
   flex: 1;
   max-width: 30%;
-  height: auto;
-  object-fit: contain;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Chart image - full width below overlay items */
 .about-overlay-chart {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* About trusted section - logos below image */
 .about-trusted {
   text-align: center;
-  margin-top: 4.5rem; /* 32px */
+  margin-top: 4.5rem;
 }
 
 .about-trusted-title {
-  font-size: 1.125rem; /* 18px */
+  font-size: var(--text-lg);
   font-weight: 600;
-  margin-bottom: 0.5rem; /* 8px */
-  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-xs);
+  color: var(--opacity-text-strongest);
 }
 
 .about-trusted-subtitle {
-  font-size: 0.875rem; /* 14px */
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1.5rem; /* 24px */
+  font-size: var(--text-base);
+  color: var(--opacity-text-medium);
+  margin-bottom: var(--space-lg);
 }
 
 .about-trusted-logos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 2rem; /* 32px */
+  gap: var(--space-xl);
   align-items: center;
   justify-items: center;
-  opacity: 0.8;
+  opacity: var(--opacity-logos-container);
 }
 
 .about-trusted-logo {
-  height: 2rem; /* 32px */
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  height: var(--space-xl);
+  opacity: var(--opacity-logo);
+  transition: opacity var(--transition-fast);
 }
 
 .about-trusted-logo:hover {
-  opacity: 1;
+  opacity: var(--opacity-logo-hover);
 }
 
 /* ============================================================
-   SERVICES SECTION STYLES - Base (1920px)
+   SERVICES SECTION
    ============================================================ */
 
-/* Services section - background and full height */
-/* Services content wrapper */
 .services-content {
   display: flex;
   flex-direction: column;
@@ -306,85 +378,21 @@ nav#navbar a:not([class*="logo"]):hover {
   overflow: visible;
 }
 
-/* Services label - "Capabilities" */
-.services-label {
-  font-size: 0.875rem; /* 14px */
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.5rem; /* 8px */
-  text-align: start;
-}
-
-/* Services title */
-.services-title {
-  font-size: 3rem; /* 48px */
-  font-weight: 600;
-  margin-bottom: 1.5rem; /* 24px */
-  text-align: start;
-  color: white;
-}
-
-/* Services description */
-.services-description {
-  min-width: 50%;
-  font-size: 1.125rem; /* 18px */
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 42rem; /* 672px */
-  margin-bottom: 4rem; /* 64px */
-  text-align: start;
-}
-
-/* Services grid - 3 columns */
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem; /* 32px */
-  overflow: visible;
-}
-
-/* Services card */
 .services-card {
-  padding-top: 0.5rem; /* 8px */
-  padding-bottom: 0.5rem; /* 8px */
-  padding-left: 0; /* No left padding to allow images to extend */
-  padding-right: 0; /* No right padding */
-  border-radius: 0.75rem; /* 12px */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.02);
-  transition: background-color 0.2s;
+  padding: var(--space-xs) 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* 8px */
+  gap: var(--space-xs);
   overflow-x: visible;
 }
 
-.services-card:hover {
-  background-color: rgba(255, 255, 255, 0.04);
-}
-
-/* Services icon */
-.services-icon {
-  font-size: 1.5rem; /* 24px */
-  margin-bottom: 0.75rem; /* 12px */
-}
-
-/* Services image */
 .services-image {
   flex-shrink: 0;
   display: block;
-  width: 120px; /* Adjust as needed */
-  margin-left: 0;
-  margin-right: 0;
+  width: 120px;
+  margin: 0;
 }
 
-.services-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Services card content wrapper */
 .services-card-content {
   flex: 1;
   padding: 5px;
@@ -392,125 +400,126 @@ nav#navbar a:not([class*="logo"]):hover {
   flex-direction: column;
 }
 
-/* Services card title */
-.services-card-title {
-  font-size: 1.25rem; /* 20px */
+.services-card-title,
+.customers-card-title {
+  font-size: var(--text-xl);
   font-weight: 600;
-  margin-bottom: 0.5rem; /* 8px */
-  color: white;
+  margin-bottom: var(--space-xs);
+  color: var(--color-white);
 }
 
-/* Services card text */
+.services-card-title {
+  margin-bottom: var(--space-xs);
+}
+
+.customers-card-title {
+  margin: 0;
+}
+
 .services-card-text {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1rem; /* 16px */
+  color: var(--opacity-text-strong);
+  font-size: var(--text-md);
 }
 
 /* ============================================================
-   CONTACT SECTION STYLES - Base (1920px)
+   CONTACT SECTION
    ============================================================ */
 
-/* Contact content wrapper */
 .contact-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem; /* 48px */
+  gap: var(--space-2xl);
   width: 100%;
   align-items: center;
 }
 
-/* Contact header */
 .contact-header {
   text-align: center;
   margin-bottom: 0;
 }
 
-/* Contact title */
 .contact-title {
-  font-size: 2.25rem; /* 36px */
+  font-size: var(--text-5xl);
   font-weight: 600;
-  margin-bottom: 1rem; /* 16px */
-  color: white;
+  margin-bottom: var(--space-md);
+  color: var(--color-white);
 }
 
-/* Contact subtitle */
 .contact-subtitle {
-  font-size: 1.125rem; /* 18px */
-  color: rgb(156, 163, 175); /* gray-400 */
+  font-size: var(--text-lg);
+  color: var(--color-gray-400);
 }
 
-/* Contact form */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* 24px */
+  gap: var(--space-lg);
   width: 100%;
-  max-width: 32rem; /* 512px - reasonable width for form */
+  max-width: 32rem;
 }
 
-/* Contact form group */
 .contact-form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* 8px */
+  gap: var(--space-xs);
 }
 
-/* Contact label */
 .contact-label {
-  font-size: 0.875rem; /* 14px */
+  font-size: var(--text-base);
   font-weight: 500;
-  color: white;
+  color: var(--color-white);
 }
 
-/* Contact input */
 .contact-input,
 .contact-textarea {
   width: 100%;
-  padding: 0.75rem 1rem; /* 12px 16px */
-  border-radius: 0.375rem; /* 6px */
-  border: 1px solid rgb(209, 213, 219); /* gray-300 */
-  background-color: white;
-  color: black;
-  font-size: 1rem; /* 16px */
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--text-md);
 }
 
 .contact-input:focus,
 .contact-textarea:focus {
   outline: none;
-  border-color: black;
+  border-color: var(--color-black);
 }
 
-/* Contact textarea */
 .contact-textarea {
   resize: vertical;
-  min-height: 9rem; /* 144px */
+  min-height: 9rem;
 }
 
-/* Contact button */
 .contact-button {
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem; /* 12px 24px */
-  border-radius: 0.375rem; /* 6px */
-  background-color: black;
-  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-weight: 500;
-  border: 1px solid white;
+  border: 1px solid var(--color-white);
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-fast);
 }
 
 .contact-button:hover {
   opacity: 0.9;
 }
 
+.contact-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ============================================================
-   CUSTOMERS SECTION STYLES - Base (1920px)
+   CUSTOMERS SECTION
    ============================================================ */
 
-/* Customers content wrapper */
 .customers-content {
   display: flex;
   flex-direction: column;
@@ -519,63 +528,25 @@ nav#navbar a:not([class*="logo"]):hover {
   overflow: visible;
 }
 
-/* Customers label */
 .customers-label {
-  font-size: 0.875rem; /* 14px */
+  font-size: var(--text-base);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.75rem; /* 12px */
+  color: var(--opacity-text-medium);
+  margin-bottom: var(--space-sm);
   text-align: start;
 }
 
-/* Customers title */
-.customers-title {
-  font-size: 3rem; /* 48px */
-  font-weight: 600;
-  margin-bottom: 1.5rem; /* 24px */
-  text-align: start;
-  color: white;
-}
-
-/* Customers description */
-.customers-description {
-  min-width: 50%;
-  font-size: 1.125rem; /* 18px */
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 42rem; /* 672px */
-  margin-bottom: 4rem; /* 64px */
-  text-align: start;
-}
-
-/* Customers grid - 3 columns */
-.customers-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem; /* 32px */
-  overflow: visible;
-}
-
-/* Customers card */
 .customers-card {
-  padding: 1.5rem; /* 24px */
-  border-radius: 0.75rem; /* 12px */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.02);
-  transition: background-color 0.2s;
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* 16px */
+  gap: var(--space-md);
   position: relative;
   overflow: hidden;
 }
 
-.customers-card:hover {
-  background-color: rgba(255, 255, 255, 0.04);
-}
-
-/* Faded background icon */
 .customers-card::before {
   content: "";
   position: absolute;
@@ -586,7 +557,7 @@ nav#navbar a:not([class*="logo"]):hover {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: -50px -50px;
-  opacity: 0.15;
+  opacity: var(--opacity-bg-image);
   pointer-events: none;
   filter: grayscale(100%);
 }
@@ -607,16 +578,14 @@ nav#navbar a:not([class*="logo"]):hover {
   background-image: url("../images/7prime.webp");
 }
 
-/* Customers card header - icon and title side by side */
 .customers-card-header {
   display: flex;
   align-items: center;
-  gap: 1rem; /* 16px */
+  gap: var(--space-md);
   position: relative;
   z-index: 1;
 }
 
-/* Customers image */
 .customers-image {
   display: flex;
   align-items: center;
@@ -625,47 +594,35 @@ nav#navbar a:not([class*="logo"]):hover {
   height: 60px;
   flex-shrink: 0;
   overflow: hidden;
-  background-color: #1a1a1a; /* Slightly darker gray background */
-  border-radius: 0.5rem; /* 8px */
+  background-color: var(--color-bg-card-alt);
+  border-radius: var(--radius-lg);
 }
 
 .customers-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
 }
 
-/* Customers card title */
-.customers-card-title {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 600;
-  margin: 0;
-  color: white;
-}
-
-/* Customers card text */
 .customers-card-text {
-  font-size: 1.75rem; /* 28px - doubled from 14px */
-  color: white;
+  font-size: var(--text-3xl);
+  color: var(--color-white);
   line-height: 1.5;
   margin: 0;
   flex-grow: 1;
 }
 
-/* Customers card link */
 .customers-card-link {
-  font-size: 0.875rem; /* 14px */
-  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--text-base);
+  color: var(--opacity-text-stronger);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
   align-self: flex-start;
   margin-top: auto;
 }
 
 .customers-card-link:hover {
-  color: white;
+  color: var(--color-white);
   text-decoration: underline;
 }
 
@@ -674,57 +631,37 @@ nav#navbar a:not([class*="logo"]):hover {
    ============================================================ */
 
 @media (min-width: 768px) {
-  /* About section title - larger on tablet+ */
   .about-title {
-    font-size: 2.25rem; /* 36px */
+    font-size: var(--text-5xl);
   }
 
-  /* About section paragraphs - same size on tablet+ */
   .about-paragraph {
-    font-size: 1.125rem; /* 18px */
+    font-size: var(--text-lg);
   }
 
-  /* About trusted section - tablet+ */
   .about-trusted-title {
-    font-size: 1.25rem; /* 20px */
+    font-size: var(--text-xl);
   }
 
   .about-trusted-subtitle {
-    font-size: 1rem; /* 16px */
+    font-size: var(--text-md);
   }
 
   .about-trusted-logo {
-    height: 2.5rem; /* 40px */
+    height: 2.5rem;
   }
 
-  /* Services section - 3 column grid on tablet+ */
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Contact section - larger title on tablet+ */
-  .contact-title {
-    font-size: 3rem; /* 48px */
+  .contact-title,
+  .customers-title {
+    font-size: var(--text-6xl);
   }
 
-  /* Customers section - 2 column grid on tablet+ */
   .customers-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Customers title - larger on tablet+ */
-  .customers-title {
-    font-size: 3rem; /* 48px */
-  }
-
-  /* Customers label - same size on tablet+ */
-  .customers-label {
-    font-size: 0.875rem; /* 14px */
-  }
-
-  /* Customers description - same size on tablet+ */
-  .customers-description {
-    font-size: 1.125rem; /* 18px */
   }
 }
 
@@ -733,7 +670,6 @@ nav#navbar a:not([class*="logo"]):hover {
    ============================================================ */
 
 @media (min-width: 2560px) {
-  /* Navbar - increased height and sizing */
   nav#navbar,
   nav#navbar > div > div {
     height: 140px;
@@ -745,46 +681,45 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   nav#navbar span {
-    font-size: 3.75rem; /* 60px */
-    color: white;
+    font-size: 3.75rem;
+    color: var(--color-white);
   }
 
   nav#navbar a:not([class*="logo"]) {
-    font-size: 3rem !important; /* 48px */
+    font-size: var(--text-6xl) !important;
   }
 
-  /* Content container - 60% width on 4K */
   .content-container {
     max-width: 60% !important;
     min-width: 60% !important;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
   }
 
-  /* Hero section - larger padding and typography */
+  /* Hero Section */
   .hero-section {
     padding-top: 300px !important;
   }
 
   .hero-title {
-    font-size: 6rem !important; /* 96px */
+    font-size: var(--text-10xl) !important;
   }
 
   .hero-subtitle {
-    font-size: 3.25rem !important; /* 52px */
+    font-size: 3.25rem !important;
     max-width: 100% !important;
     padding: 20px 0px !important;
   }
 
   .hero-button {
-    font-size: 3.5rem !important; /* 56px */
-    padding: 1rem 2rem !important;
+    font-size: 3.5rem !important;
+    padding: var(--space-md) var(--space-xl) !important;
   }
 
   .hero-buttons {
-    gap: 1rem !important; /* 16px */
+    gap: var(--space-md) !important;
   }
 
   .hero-image-container {
@@ -797,16 +732,17 @@ nav#navbar a:not([class*="logo"]):hover {
     height: 90% !important;
   }
 
-  /* About section - larger typography and adjusted container */
+  /* About Section */
   .about-title {
-    font-size: 4.5rem !important; /* 72px */
+    font-size: var(--text-8xl) !important;
   }
+
   .about-trusted {
     margin-top: 15rem !important;
   }
 
   .about-paragraph {
-    font-size: 2.25rem !important; /* 36px */
+    font-size: var(--text-5xl) !important;
   }
 
   .about-image {
@@ -815,146 +751,127 @@ nav#navbar a:not([class*="logo"]):hover {
     width: 70% !important;
   }
 
-  /* About trusted section - 4K */
   .about-trusted-title {
-    font-size: 3.5rem !important; /* 56px */
+    font-size: 3.5rem !important;
   }
 
   .about-trusted-subtitle {
-    font-size: 2.5rem !important; /* 40px */
-    margin-bottom: 3.5rem !important; /* 16px */
+    font-size: 2.5rem !important;
+    margin-bottom: 3.5rem !important;
   }
 
   .about-trusted-logos {
-    gap: 4rem !important; /* 64px */
+    gap: var(--space-3xl) !important;
   }
 
   .about-trusted-logo {
-    height: 6rem !important; /* 96px */
+    height: 6rem !important;
   }
 
-  /* Services section - larger typography and spacing on 4K */
-
+  /* Services Section */
   .services-label {
-    font-size: 1.5rem !important; /* 24px */
-    margin-bottom: 1rem !important; /* 16px */
+    font-size: var(--text-2xl) !important;
+    margin-bottom: var(--space-md) !important;
   }
 
   .services-title {
-    font-size: 5rem !important; /* 80px */
-    margin-bottom: 2rem !important; /* 32px */
+    font-size: var(--text-9xl) !important;
+    margin-bottom: var(--space-xl) !important;
   }
 
   .services-description {
-    font-size: 2.25rem !important; /* 36px */
-    max-width: 56rem !important; /* 896px */
-    margin-bottom: 6rem !important; /* 96px */
+    font-size: var(--text-5xl) !important;
+    max-width: 56rem !important;
+    margin-bottom: 6rem !important;
   }
 
   .services-grid {
-    gap: 3rem !important; /* 48px */
+    gap: var(--space-2xl) !important;
   }
 
   .services-card {
-    padding-top: 2.5rem !important; /* 40px */
-    padding-bottom: 2.5rem !important; /* 40px */
-    padding-left: 0 !important; /* No left padding to allow images to extend */
-    padding-right: 0 !important; /* No right padding */
-    border-radius: 1rem !important; /* 16px */
-  }
-
-  .services-icon {
-    font-size: 3rem !important; /* 48px */
-    margin-bottom: 1.5rem !important; /* 24px */
+    padding: 2.5rem 0 !important;
+    border-radius: var(--radius-2xl) !important;
+    gap: var(--space-xl) !important;
   }
 
   .services-image {
-    width: 200px !important; /* Adjust as needed for 4K */
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .services-image img {
-    width: 100%;
-    height: auto;
-  }
-
-  .services-card {
-    gap: 2rem !important; /* 32px */
+    width: 200px !important;
+    margin: 0 !important;
   }
 
   .services-card-title {
-    font-size: 2.25rem !important; /* 36px */
-    margin-bottom: 1rem !important; /* 16px */
+    font-size: var(--text-5xl) !important;
+    margin-bottom: var(--space-md) !important;
   }
 
   .services-card-text {
-    font-size: 1.75rem !important; /* 28px */
+    font-size: var(--text-3xl) !important;
   }
 
-  /* Contact section - larger typography on 4K */
+  /* Contact Section */
   .contact-title {
-    font-size: 5rem !important; /* 80px */
+    font-size: var(--text-9xl) !important;
   }
 
   .contact-subtitle {
-    font-size: 2.25rem !important; /* 36px */
+    font-size: var(--text-5xl) !important;
   }
 
   .contact-content {
-    gap: 4rem !important; /* 64px */
+    gap: var(--space-3xl) !important;
     width: 100% !important;
   }
 
   .contact-form {
-    gap: 2rem !important; /* 32px */
+    gap: var(--space-xl) !important;
     width: 100% !important;
-    max-width: 48rem !important; /* 768px - larger for 4K but still reasonable */
+    max-width: 48rem !important;
   }
 
   .contact-label {
-    font-size: 1.5rem !important; /* 24px */
+    font-size: var(--text-2xl) !important;
   }
 
   .contact-input,
   .contact-textarea {
-    padding: 1.25rem 1.5rem !important; /* 20px 24px */
-    font-size: 1.75rem !important; /* 28px */
+    padding: 1.25rem var(--space-lg) !important;
+    font-size: var(--text-3xl) !important;
   }
 
   .contact-textarea {
-    min-height: 12rem !important; /* 192px */
+    min-height: 12rem !important;
   }
 
   .contact-button {
-    padding: 1.25rem 2rem !important; /* 20px 32px */
-    font-size: 1.75rem !important; /* 28px */
+    padding: 1.25rem var(--space-xl) !important;
+    font-size: var(--text-3xl) !important;
   }
 
-  /* Customers section - larger typography on 4K */
+  /* Customers Section */
   .customers-label {
-    font-size: 1.5rem !important; /* 24px */
+    font-size: var(--text-2xl) !important;
   }
 
   .customers-title {
-    font-size: 5rem !important; /* 80px */
+    font-size: var(--text-9xl) !important;
   }
 
   .customers-description {
-    font-size: 2.25rem !important; /* 36px */
+    font-size: var(--text-5xl) !important;
   }
 
   .customers-grid {
-    gap: 3rem !important; /* 48px */
+    gap: var(--space-2xl) !important;
   }
 
   .customers-card {
-    padding: 2.5rem !important; /* 40px */
-    gap: 1.5rem !important; /* 24px */
+    padding: 2.5rem !important;
+    gap: var(--space-lg) !important;
   }
 
   .customers-card-header {
-    gap: 1.5rem !important; /* 24px */
+    gap: var(--space-lg) !important;
   }
 
   .customers-image {
@@ -964,11 +881,11 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .customers-card-title {
-    font-size: 2.25rem !important; /* 36px */
+    font-size: var(--text-5xl) !important;
   }
 
   .customers-card-text {
-    font-size: 3.5rem !important; /* 56px - doubled from 28px */
+    font-size: 3.5rem !important;
   }
 
   .customers-card::before {
@@ -980,7 +897,7 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .customers-card-link {
-    font-size: 1.5rem !important; /* 24px */
+    font-size: var(--text-2xl) !important;
   }
 }
 
@@ -989,7 +906,7 @@ nav#navbar a:not([class*="logo"]):hover {
    ============================================================ */
 
 @media (max-width: 767px) {
-  /* Content container - full width on mobile for all sections */
+  /* Content Container */
   .navbar-wrapper .content-container,
   .hero-section .content-container,
   .about-section .content-container,
@@ -998,11 +915,10 @@ nav#navbar a:not([class*="logo"]):hover {
   .contact-section .content-container {
     max-width: 100% !important;
     min-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Hero section - mobile adjustments */
+  /* Hero Section */
   .hero-section {
     padding-top: 120px !important;
     max-width: 100vw !important;
@@ -1010,13 +926,13 @@ nav#navbar a:not([class*="logo"]):hover {
 
   .hero-title {
     max-width: 100% !important;
-    font-size: 2rem !important; /* 32px */
+    font-size: var(--text-4xl) !important;
     max-height: 200px !important;
   }
 
   .hero-subtitle {
     width: 100% !important;
-    font-size: 1.25rem !important; /* 20px */
+    font-size: var(--text-xl) !important;
     padding: 20px 0px !important;
   }
 
@@ -1024,7 +940,6 @@ nav#navbar a:not([class*="logo"]):hover {
     gap: 0rem !important;
   }
 
-  /* Hero images - hide desktop, show mobile */
   .hero-image-container {
     display: none !important;
   }
@@ -1039,18 +954,17 @@ nav#navbar a:not([class*="logo"]):hover {
     display: block !important;
   }
 
-  /* About section - mobile adjustments */
+  /* About Section */
   .about-content {
-    gap: 2rem !important; /* 32px */
+    gap: var(--space-xl) !important;
   }
 
   .about-image {
-    margin: 0 auto !important;
-    margin-top: 20px !important;
+    margin: 20px auto 0 !important;
     transform: perspective(100px) rotateX(10deg) !important;
     width: 70% !important;
-    gap: 0.5rem !important; /* 8px */
-    padding: 0.5rem !important; /* 8px */
+    gap: var(--space-xs) !important;
+    padding: var(--space-xs) !important;
   }
 
   .about-overlay-top {
@@ -1058,202 +972,180 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .about-title {
-    margin-top: 2rem !important;
-  }
-
-  /* About trusted section - mobile */
-  .about-content {
-    gap: 0.5rem !important; /* 24px - further reduced for mobile */
+    margin-top: var(--space-xl) !important;
   }
 
   .about-trusted {
-    margin-top: 3rem !important; /* 16px */
+    margin-top: var(--space-2xl) !important;
   }
 
   .about-trusted-title {
-    padding-top: 1rem !important;
-    font-size: 0.875rem !important; /* 14px */
+    padding-top: var(--space-md) !important;
+    font-size: var(--text-base) !important;
   }
 
   .about-trusted-subtitle {
-    font-size: 0.75rem !important; /* 12px */
-    margin-bottom: 1.5rem !important; /* 16px */
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-lg) !important;
   }
 
   .about-trusted-logos {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.5rem !important; /* 24px */
+    gap: var(--space-lg) !important;
   }
 
   .about-trusted-logo {
-    height: 1.5rem !important; /* 24px */
+    height: var(--space-lg) !important;
   }
 
   .about-paragraph {
-    margin-bottom: 0.75rem !important; /* 8px */
+    margin-bottom: var(--space-sm) !important;
   }
-  /* Services section - mobile adjustments */
 
+  /* Services Section */
   .services-label {
-    font-size: 0.75rem !important; /* 12px */
-    margin-bottom: 0.5rem !important; /* 8px */
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-xs) !important;
   }
 
   .services-title {
-    font-size: 1.5rem !important; /* 24px */
-    margin-bottom: 1rem !important; /* 16px */
+    font-size: var(--text-2xl) !important;
+    margin-bottom: var(--space-md) !important;
   }
 
   .services-description {
-    font-size: 1rem !important; /* 16px */
+    font-size: var(--text-md) !important;
     max-width: 100% !important;
-    margin-bottom: 2rem !important; /* 32px */
+    margin-bottom: var(--space-xl) !important;
   }
 
   .services-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important; /* 24px */
+    gap: var(--space-lg) !important;
   }
 
   .services-card {
-    padding-top: 1.25rem !important; /* 20px */
-    padding-bottom: 1.25rem !important; /* 20px */
-    padding-left: 0 !important; /* No left padding to allow images to extend */
-    padding-right: 0 !important; /* No right padding */
-  }
-
-  .services-icon {
-    font-size: 1.25rem !important; /* 20px */
-    margin-bottom: 0.5rem !important; /* 8px */
+    padding: 1.25rem 0 !important;
+    gap: var(--space-md) !important;
   }
 
   .services-image {
-    width: 80px !important; /* Adjust as needed for mobile */
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .services-image img {
-    width: 100%;
-    height: auto;
-  }
-
-  .services-card {
-    gap: 1rem !important; /* 16px */
+    width: 80px !important;
+    margin: 0 !important;
   }
 
   .services-card-title {
-    font-size: 1.125rem !important; /* 18px */
-    margin-bottom: 0.5rem !important; /* 8px */
+    font-size: var(--text-lg) !important;
+    margin-bottom: var(--space-xs) !important;
   }
 
   .services-card-text {
-    font-size: 0.875rem !important; /* 14px */
+    font-size: var(--text-base) !important;
   }
 
-  /* Contact section - mobile adjustments */
+  /* Contact Section */
   .contact-title {
-    font-size: 1.75rem !important; /* 28px */
+    font-size: var(--text-3xl) !important;
   }
 
   .contact-subtitle {
-    font-size: 1rem !important; /* 16px */
+    font-size: var(--text-md) !important;
   }
 
   .contact-content {
-    gap: 2rem !important; /* 32px */
+    gap: var(--space-xl) !important;
     max-width: 100% !important;
   }
 
   .contact-form {
-    gap: 1.25rem !important; /* 20px */
+    gap: 1.25rem !important;
     max-width: 100% !important;
   }
 
   .contact-label {
-    font-size: 0.875rem !important; /* 14px */
+    font-size: var(--text-base) !important;
   }
 
   .contact-input,
   .contact-textarea {
-    padding: 0.625rem 0.875rem !important; /* 10px 14px */
-    font-size: 0.875rem !important; /* 14px */
+    padding: 0.625rem var(--space-sm) !important;
+    font-size: var(--text-base) !important;
   }
 
   .contact-textarea {
-    min-height: 8rem !important; /* 128px */
+    min-height: 8rem !important;
   }
 
   .contact-button {
-    padding: 0.625rem 1.25rem !important; /* 10px 20px */
-    font-size: 0.875rem !important; /* 14px */
+    padding: 0.625rem 1.25rem !important;
+    font-size: var(--text-base) !important;
   }
 
-  /* Customers section - mobile adjustments */
+  /* Customers Section */
   .customers-section {
     min-height: 100vh !important;
     height: auto !important;
     overflow: visible !important;
-    padding-top: 6rem !important; /* Added top padding to account for navbar */
-    padding-bottom: 2rem !important;
-    scroll-margin-top: 4rem !important; /* Ensures anchor links account for navbar */
+    padding-top: 6rem !important;
+    padding-bottom: var(--space-xl) !important;
+    scroll-margin-top: var(--space-3xl) !important;
   }
 
   .customers-content {
-    gap: 1.5rem !important; /* Reduced from 3rem */
+    gap: var(--space-lg) !important;
   }
 
   .customers-label {
-    font-size: 0.625rem !important; /* 10px - scaled down */
-    margin-bottom: 0.5rem !important;
+    font-size: var(--text-xs) !important;
+    margin-bottom: var(--space-xs) !important;
   }
 
   .customers-title {
-    font-size: 1.25rem !important; /* 20px - scaled down */
-    margin-bottom: 0.75rem !important;
+    font-size: var(--text-xl) !important;
+    margin-bottom: var(--space-sm) !important;
   }
 
   .customers-description {
-    font-size: 0.75rem !important; /* 12px - scaled down */
-    margin-bottom: 1.5rem !important; /* 24px */
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-lg) !important;
   }
 
   .customers-grid {
     grid-template-columns: 1fr !important;
-    gap: 1rem !important; /* 16px - scaled down */
+    gap: var(--space-md) !important;
   }
 
   .customers-card {
-    padding: 1rem !important; /* 16px - scaled down */
-    gap: 0.625rem !important; /* 10px - scaled down */
+    padding: var(--space-md) !important;
+    gap: 0.625rem !important;
   }
 
   .customers-card-header {
-    gap: 0.625rem !important; /* 10px - scaled down */
+    gap: 0.625rem !important;
   }
 
   .customers-image {
-    width: 40px !important; /* Scaled down from 60px */
-    height: 40px !important; /* Scaled down from 60px */
+    width: 40px !important;
+    height: 40px !important;
     overflow: hidden !important;
   }
 
   .customers-card-title {
-    font-size: 0.875rem !important; /* 14px - scaled down */
+    font-size: var(--text-base) !important;
   }
 
   .customers-card-text {
-    font-size: 0.875rem !important; /* 14px - scaled down from 1.75rem */
+    font-size: var(--text-base) !important;
     line-height: 1.4 !important;
   }
 
   .customers-card-link {
-    font-size: 0.75rem !important; /* 12px - scaled down */
+    font-size: var(--text-sm) !important;
   }
 
   .customers-card::before {
-    width: 250px !important; /* Scaled down from 400px */
-    height: 250px !important; /* Scaled down from 400px */
+    width: 250px !important;
+    height: 250px !important;
     top: -30px !important;
     right: -80px !important;
   }
