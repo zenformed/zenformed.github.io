@@ -433,6 +433,13 @@ nav#navbar a:not([class*="logo"]):hover {
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .contact-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
 .contact-header {
   text-align: center;
   margin-bottom: 0;
@@ -456,6 +463,12 @@ nav#navbar a:not([class*="logo"]):hover {
   gap: var(--space-lg);
   width: 100%;
   max-width: 32rem;
+}
+
+@media (min-width: 768px) {
+  .contact-form {
+    max-width: 100%;
+  }
 }
 
 .contact-form-group {
