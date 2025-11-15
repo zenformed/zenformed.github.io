@@ -8,18 +8,35 @@ export async function loadSection(selector, url) {
     mount.innerHTML = html;
 
     // Execute any script tags that were loaded
-    const scripts = mount.querySelectorAll("script");
+    // Note: Inline scripts in loaded sections are not executed for security and compatibility
+    // Use external script files loaded in index.html instead
+    const scripts = Array.from(mount.querySelectorAll("script"));
     scripts.forEach((oldScript) => {
-      const newScript = document.createElement("script");
-      if (oldScript.type) {
-        newScript.type = oldScript.type;
+      try {
+        // Only handle external scripts
+        if (oldScript.src) {
+          const newScript = document.createElement("script");
+          newScript.src = oldScript.src;
+          if (oldScript.type) {
+            newScript.type = oldScript.type;
+          }
+          if (oldScript.async) newScript.async = true;
+          if (oldScript.defer) newScript.defer = true;
+          const parent = oldScript.parentNode;
+          if (parent) {
+            parent.insertBefore(newScript, oldScript);
+            parent.removeChild(oldScript);
+          }
+        } else {
+          // Remove inline scripts - they should be in external files
+          const parent = oldScript.parentNode;
+          if (parent) {
+            parent.removeChild(oldScript);
+          }
+        }
+      } catch (e) {
+        console.error('Error handling script:', e);
       }
-      if (oldScript.src) {
-        newScript.src = oldScript.src;
-      } else {
-        newScript.textContent = oldScript.textContent;
-      }
-      oldScript.parentNode.replaceChild(newScript, oldScript);
     });
   } catch (e) {
     mount.innerHTML = `<div class="p-4 text-red-600">Failed to load section: ${url}</div>`;

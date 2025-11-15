@@ -171,6 +171,7 @@
       <div id="capabilities"></div>
       <div id="pricing"></div>
       <div id="customers"></div>
+      <div id="testimonials"></div>
     </main>
     <footer id="contact"></footer>
 
@@ -192,6 +193,14 @@
         });
 
         await loadSection('#navbar', './sections/navbar.html');
+
+        // Load navbar script
+        if (!document.querySelector('script[src="./js/navbar.js"]')) {
+          const navbarScript = document.createElement('script');
+          navbarScript.src = './js/navbar.js';
+          document.body.appendChild(navbarScript);
+        }
+
         await loadSection('#hero', './sections/hero.html');
 
         // Initialize hero animations after hero section is loaded
@@ -201,6 +210,15 @@
         await loadSection('#capabilities', './sections/capabilities.html');
         await loadSection('#pricing', './sections/pricing.html');
         await loadSection('#customers', './sections/customers.html');
+        await loadSection('#testimonials', './sections/testimonials.html');
+
+        // Load testimonials carousel script
+        if (!document.querySelector('script[src="./js/testimonials-carousel.js"]')) {
+          const carouselScript = document.createElement('script');
+          carouselScript.src = './js/testimonials-carousel.js';
+          document.body.appendChild(carouselScript);
+        }
+
         await loadSection('#contact', './sections/contact.html');
 
         // Refresh AOS after all sections are loaded to detect new elements

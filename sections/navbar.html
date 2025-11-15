@@ -85,26 +85,3 @@
     >
   </div>
 </div>
-
-<script>
-  (function() {
-    var btn = document.getElementById('mobile-menu-button');
-    var menu = document.getElementById('mobile-menu');
-    var links = document.querySelectorAll('#mobile-menu a');
-
-    function toggleMenu() {
-      var isHidden = menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', !isHidden);
-    }
-
-    btn.onclick = toggleMenu;
-
-    links.forEach(function(link) {
-      link.onclick = function() {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-      };
-    });
-  })();
-</script>
