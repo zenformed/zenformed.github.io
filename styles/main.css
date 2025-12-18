@@ -588,7 +588,7 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 .customers-card:nth-child(4)::before {
-  background-image: url("../images/7prime.webp");
+  background-image: url("../images/consulvista.webp");
 }
 
 .customers-card-header {
