@@ -273,6 +273,15 @@ nav#navbar a:not([class*="logo"]):hover {
   overflow: visible;
 }
 
+.about-label {
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--opacity-text-light);
+  margin-bottom: var(--space-xs);
+  text-align: start;
+}
+
 .about-title {
   font-size: 1.875rem;
   font-weight: 600;
@@ -1005,6 +1014,11 @@ nav#navbar a:not([class*="logo"]):hover {
     margin-bottom: var(--space-md) !important;
   }
 
+  .about-label {
+    font-size: var(--text-2xl) !important;
+    margin-bottom: var(--space-md) !important;
+  }
+
   .services-title {
     font-size: var(--text-9xl) !important;
     margin-bottom: var(--space-xl) !important;
@@ -1261,6 +1275,7 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   .about-title {
+    font-size: var(--text-2xl) !important;
     margin-top: var(--space-xl) !important;
   }
 
@@ -1293,6 +1308,11 @@ nav#navbar a:not([class*="logo"]):hover {
 
   /* Services Section */
   .services-label {
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-xs) !important;
+  }
+
+  .about-label {
     font-size: var(--text-sm) !important;
     margin-bottom: var(--space-xs) !important;
   }
