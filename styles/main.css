@@ -390,9 +390,26 @@ nav#navbar a:not([class*="logo"]):hover {
 .services-card {
   padding: var(--space-xs) 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--space-xs);
   overflow-x: visible;
+}
+
+/* Image + paragraph row (capabilities); process/pricing still use .services-card-content */
+.services-card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.services-card-body .services-card-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .services-image {
@@ -404,9 +421,11 @@ nav#navbar a:not([class*="logo"]):hover {
 
 .services-card-content {
   flex: 1;
+  min-width: 0;
   padding: 5px;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .services-card-title,
@@ -419,6 +438,20 @@ nav#navbar a:not([class*="logo"]):hover {
 
 .services-card-title {
   margin-bottom: var(--space-xs);
+  text-align: left;
+}
+
+/* Capabilities: title above image | body — centered band; padding intentionally none */
+.services-card > .services-card-title {
+  flex-shrink: 0;
+  align-self: center;
+  width: 100%;
+  max-width: min(36rem, calc(100% - 2 * var(--space-xl)));
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .customers-card-title {
@@ -428,6 +461,7 @@ nav#navbar a:not([class*="logo"]):hover {
 .services-card-text {
   color: var(--opacity-text-strong);
   font-size: var(--text-md);
+  text-align: left;
 }
 
 /* ============================================================
@@ -464,6 +498,54 @@ nav#navbar a:not([class*="logo"]):hover {
 .contact-subtitle {
   font-size: var(--text-lg);
   color: var(--color-gray-400);
+}
+
+.contact-brand-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-brand-name {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.contact-details-columns > div > p:first-child {
+  font-size: var(--text-xl);
+  color: var(--color-white);
+}
+
+.contact-details-columns > div > p:not(:first-child) {
+  font-size: var(--text-lg);
+  line-height: 1.45;
+}
+
+.contact-details-columns > div > a {
+  font-size: var(--text-lg);
+  line-height: 1.45;
+}
+
+@media (min-width: 768px) {
+  .contact-brand-img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .contact-brand-name {
+    font-size: var(--text-4xl);
+  }
+
+  .contact-details-columns > div > p:first-child {
+    font-size: var(--text-2xl);
+  }
+
+  .contact-details-columns > div > p:not(:first-child),
+  .contact-details-columns > div > a {
+    font-size: var(--text-xl);
+  }
 }
 
 .contact-form {
@@ -906,29 +988,12 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 /* ============================================================
-   RESPONSIVE: 4K DISPLAYS (2560px and up)
+   RESPONSIVE: LARGE DESKTOPS / 2K (2560px and up)
+   (Navbar stays default size here — 2K viewports are too narrow
+   for the 4K nav scale next to a 60% content band. True 4K below.)
    ============================================================ */
 
 @media (min-width: 2560px) {
-  nav#navbar,
-  nav#navbar > div > div {
-    height: 140px;
-  }
-
-  nav#navbar img {
-    height: 60px;
-    width: 60px;
-  }
-
-  nav#navbar span {
-    font-size: 3.75rem;
-    color: var(--color-white);
-  }
-
-  nav#navbar a:not([class*="logo"]) {
-    font-size: var(--text-6xl) !important;
-  }
-
   .content-container {
     max-width: 60% !important;
     min-width: 60% !important;
@@ -936,40 +1001,6 @@ nav#navbar a:not([class*="logo"]):hover {
     margin-right: auto;
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
-  }
-
-  /* Hero Section */
-  .hero-section {
-    padding-top: 300px !important;
-  }
-
-  .hero-title {
-    font-size: var(--text-10xl) !important;
-  }
-
-  .hero-subtitle {
-    font-size: 3.25rem !important;
-    max-width: 100% !important;
-    padding: 20px 0px !important;
-  }
-
-  .hero-button {
-    font-size: 3.5rem !important;
-    padding: var(--space-md) var(--space-xl) !important;
-  }
-
-  .hero-buttons {
-    gap: var(--space-md) !important;
-  }
-
-  .hero-image-container {
-    bottom: -50% !important;
-    left: 15% !important;
-  }
-
-  .hero-image-wrapper {
-    width: 90% !important;
-    height: 90% !important;
   }
 
   /* About Section */
@@ -1037,6 +1068,10 @@ nav#navbar a:not([class*="logo"]):hover {
   .services-card {
     padding: 2.5rem 0 !important;
     border-radius: var(--radius-2xl) !important;
+    gap: var(--space-xl) !important;
+  }
+
+  .services-card-body {
     gap: var(--space-xl) !important;
   }
 
@@ -1204,6 +1239,220 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 /* ============================================================
+   HERO: 2K / QHD band (2560–3839px)
+   Softer type + less top padding so copy sits above the IDE art.
+   ============================================================ */
+
+@media (min-width: 2560px) and (max-width: 3839px) {
+  .hero-section {
+    padding-top: 200px !important;
+  }
+
+  .hero-title {
+    font-size: var(--text-8xl) !important;
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-5xl) !important;
+    max-width: 100% !important;
+    padding: 12px 0 !important;
+  }
+
+  .hero-button {
+    font-size: var(--text-4xl) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+  }
+
+  .hero-buttons {
+    gap: var(--space-sm) !important;
+  }
+
+  .hero-image-container {
+    bottom: -52% !important;
+    left: 15% !important;
+  }
+
+  .hero-image-wrapper {
+    width: 88% !important;
+    height: 88% !important;
+  }
+
+  /* About — 2K: less vertical air + tighter logo row (full rules stay in min-2560 for 4K) */
+  .about-trusted {
+    margin-top: 5.5rem !important;
+  }
+
+  .about-image {
+    width: 62% !important;
+    margin-top: 2.5rem !important;
+  }
+
+  .about-trusted-subtitle {
+    margin-bottom: var(--space-xl) !important;
+  }
+
+  .about-trusted-logos {
+    gap: var(--space-lg) !important;
+  }
+
+  .about-trusted-logo {
+    height: 4.25rem !important;
+  }
+
+  /* Capabilities cards — 2K: top-align copy with icons + room for titles */
+  .services-card {
+    gap: var(--space-lg) !important;
+  }
+
+  .services-card-body {
+    gap: var(--space-lg) !important;
+  }
+
+  .services-image {
+    width: 160px !important;
+  }
+
+  .services-card-title {
+    font-size: var(--text-4xl) !important;
+    line-height: 1.15 !important;
+  }
+
+  .services-card-text {
+    font-size: var(--text-2xl) !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Customers — 2K: dial back min-2560 / 4K-scale type + card chrome */
+  .customers-label {
+    font-size: var(--text-lg) !important;
+  }
+
+  .customers-title {
+    font-size: var(--text-7xl) !important;
+  }
+
+  .customers-description {
+    font-size: var(--text-3xl) !important;
+  }
+
+  .customers-grid {
+    gap: var(--space-xl) !important;
+  }
+
+  .customers-card {
+    padding: var(--space-xl) !important;
+    gap: var(--space-md) !important;
+  }
+
+  .customers-card-header {
+    gap: var(--space-md) !important;
+  }
+
+  .customers-image {
+    width: 84px !important;
+    height: 84px !important;
+  }
+
+  .customers-card-title {
+    font-size: var(--text-3xl) !important;
+  }
+
+  .customers-card-text {
+    font-size: var(--text-2xl) !important;
+  }
+
+  .customers-card-link {
+    font-size: var(--text-lg) !important;
+  }
+
+  .customers-card::before {
+    width: 520px !important;
+    height: 520px !important;
+    top: -100px !important;
+    right: -120px !important;
+  }
+}
+
+/* ============================================================
+   NAVBAR + HERO: 4K / UHD only (3840px+)
+   Scaled nav was under min-width: 2560px, which also matched
+   2560×1440 “2K”. Hero uses the same full-size treatment here only.
+   ============================================================ */
+
+@media (min-width: 3840px) {
+  nav#navbar,
+  nav#navbar > div > div {
+    height: 140px;
+  }
+
+  nav#navbar img {
+    height: 60px;
+    width: 60px;
+  }
+
+  nav#navbar span {
+    font-size: 3.75rem;
+    color: var(--color-white);
+  }
+
+  nav#navbar a:not([class*="logo"]) {
+    font-size: var(--text-6xl) !important;
+  }
+
+  .hero-section {
+    padding-top: 300px !important;
+  }
+
+  .hero-title {
+    font-size: var(--text-10xl) !important;
+  }
+
+  .hero-subtitle {
+    font-size: 3.25rem !important;
+    max-width: 100% !important;
+    padding: 20px 0px !important;
+  }
+
+  .hero-button {
+    font-size: 3.5rem !important;
+    padding: var(--space-md) var(--space-xl) !important;
+  }
+
+  .hero-buttons {
+    gap: var(--space-md) !important;
+  }
+
+  .hero-image-container {
+    bottom: -50% !important;
+    left: 15% !important;
+  }
+
+  .hero-image-wrapper {
+    width: 90% !important;
+    height: 90% !important;
+  }
+
+  /* Contact — 4K: logo / address / phone scale with title + form */
+  .contact-brand-img {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+
+  .contact-brand-name {
+    font-size: var(--text-7xl) !important;
+  }
+
+  .contact-details-columns > div > p:first-child {
+    font-size: var(--text-5xl) !important;
+  }
+
+  .contact-details-columns > div > p:not(:first-child),
+  .contact-details-columns > div > a {
+    font-size: var(--text-4xl) !important;
+  }
+}
+
+/* ============================================================
    RESPONSIVE: MOBILE (767px and below)
    ============================================================ */
 
@@ -1239,6 +1488,10 @@ nav#navbar a:not([class*="logo"]):hover {
     padding: 20px 0px !important;
   }
 
+  .hero-button {
+    font-size: var(--text-base) !important;
+  }
+
   .hero-content {
     gap: 0rem !important;
   }
@@ -1257,7 +1510,19 @@ nav#navbar a:not([class*="logo"]):hover {
     display: block !important;
   }
 
-  /* About Section */
+  /* About → Capabilities → How it works → Customers → Testimonials: `h-screen`
+     fixes height to 100vh while mobile content is taller, so overflow paints over
+     the next section. Same pattern + bottom padding for air between each block. */
+  .about-section,
+  .services-section,
+  .customers-section,
+  .testimonials-section {
+    height: auto !important;
+    min-height: 100vh !important;
+    align-items: flex-start !important;
+    padding-bottom: var(--space-3xl) !important;
+  }
+
   .about-content {
     gap: var(--space-xl) !important;
   }
