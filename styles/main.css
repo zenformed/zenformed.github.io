@@ -1396,7 +1396,32 @@ nav#navbar a:not([class*="logo"]):hover {
   }
 
   nav#navbar a:not([class*="logo"]) {
-    font-size: var(--text-6xl) !important;
+    font-size: var(--text-5xl) !important;
+  }
+
+  nav#navbar .navbar-desktop-links {
+    gap: 3.5rem !important;
+  }
+
+  /* How it works (#process): card body uses Tailwind text-*; scale up on 4K only */
+  #process .services-card-content .services-card-title {
+    font-size: var(--text-5xl) !important;
+  }
+
+  #process .services-card-content .services-card-text {
+    font-size: var(--text-3xl) !important;
+  }
+
+  #process .services-card-content ul {
+    font-size: var(--text-2xl) !important;
+  }
+
+  #process .services-card-content > a {
+    font-size: var(--text-2xl) !important;
+  }
+
+  #process .services-card.relative > .absolute {
+    font-size: var(--text-sm) !important;
   }
 
   .hero-section {
