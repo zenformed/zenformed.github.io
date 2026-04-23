@@ -197,7 +197,7 @@
               <source src="images/promo.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="text-sm text-gray-500">
+          <p class="mt-4 text-center text-sm text-gray-500">
             This is a promotional video for Zenformed. It is a video that shows
             the features and benefits of Zenformed.
           </p>
@@ -221,13 +221,6 @@
 
       // Wait for DOM to be fully loaded before calling
       document.addEventListener('DOMContentLoaded', async () => {
-        // Initialize AOS
-        AOS.init({
-          duration: 600,
-          easing: 'ease-out',
-          once: true,
-        });
-
         await loadSection('#navbar', './sections/navbar.html');
 
         // Load navbar script
@@ -241,6 +234,16 @@
 
         // Initialize hero animations after hero section is loaded
         initHeroAnimations();
+
+        // Defer AOS.init until after navbar + hero have laid out
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve))
+        );
+        AOS.init({
+          duration: 600,
+          easing: 'ease-out',
+          once: true,
+        });
 
         await loadSection('#about', './sections/about.html');
         await loadSection('#capabilities', './sections/capabilities.html');
@@ -257,8 +260,16 @@
 
         await loadSection('#contact', './sections/contact.html');
 
-        // Refresh AOS after all sections are loaded to detect new elements
-        AOS.refresh();
+        // Defer AOS.refresh out of the inject burst
+        const runAosRefresh = () => {
+          if (typeof AOS === 'undefined' || typeof AOS.refresh !== 'function') return;
+          AOS.refresh();
+        };
+        if (typeof requestIdleCallback === 'function') {
+          requestIdleCallback(runAosRefresh, { timeout: 2000 });
+        } else {
+          requestAnimationFrame(() => requestAnimationFrame(runAosRefresh));
+        }
       });
     </script>
   </body>
