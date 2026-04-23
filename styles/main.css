@@ -171,6 +171,11 @@ html {
   }
 }
 
+/* About is fetch-injected; reserve one viewport of height while mount is empty to cut CLS when HTML arrives */
+#about:empty {
+  min-height: 100vh;
+}
+
 /* ============================================================
    SHARED COMPONENT PATTERNS
    ============================================================ */
