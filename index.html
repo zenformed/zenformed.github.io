@@ -61,6 +61,8 @@
       type="image/webp"
       fetchpriority="high"
     />
+    <link rel="modulepreload" href="./js/sections.js" />
+    <link rel="modulepreload" href="./js/hero-animations.js" />
 
     <!-- Preconnect to External Resources -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
@@ -217,7 +219,6 @@
     <!-- Loader util -->
     <script type="module">
       import { loadSection } from './js/sections.js';
-      import { initHeroAnimations } from './js/hero-animations.js';
 
       // Wait for DOM to be fully loaded before calling
       document.addEventListener('DOMContentLoaded', async () => {
@@ -232,7 +233,7 @@
 
         await loadSection('#hero', './sections/hero.html');
 
-        // Initialize hero animations after hero section is loaded
+        const { initHeroAnimations } = await import('./js/hero-animations.js');
         initHeroAnimations();
 
         // Defer AOS.init until after navbar + hero have laid out
