@@ -213,12 +213,55 @@
     </main>
     <footer id="contact"></footer>
 
-    <!-- AOS JS - Defer to avoid render blocking -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
-
-    <!-- Loader util -->
+    <!-- Loader util (AOS loads after sections — avoids reflow during fetch/inject) -->
     <script type="module">
       import { loadSection } from './js/sections.js';
+
+      const AOS_SRC = 'https://unpkg.com/aos@next/dist/aos.js';
+
+      function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            if (existing.dataset.loaded === '1') {
+              resolve();
+              return;
+            }
+            existing.addEventListener('load', () => resolve(), { once: true });
+            existing.addEventListener('error', () => reject(new Error(src)), {
+              once: true,
+            });
+            return;
+          }
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          s.onload = () => {
+            s.dataset.loaded = '1';
+            resolve();
+          };
+          s.onerror = () => reject(new Error(src));
+          document.head.appendChild(s);
+        });
+      }
+
+      function waitForAos(timeoutMs) {
+        const deadline = Date.now() + timeoutMs;
+        return new Promise((resolve, reject) => {
+          function tick() {
+            if (typeof AOS !== 'undefined') {
+              resolve();
+              return;
+            }
+            if (Date.now() > deadline) {
+              reject(new Error('AOS timeout'));
+              return;
+            }
+            requestAnimationFrame(tick);
+          }
+          tick();
+        });
+      }
 
       // Wait for DOM to be fully loaded before calling
       document.addEventListener('DOMContentLoaded', async () => {
@@ -236,16 +279,6 @@
         const { initHeroAnimations } = await import('./js/hero-animations.js');
         initHeroAnimations();
 
-        // Defer AOS.init until after navbar + hero have laid out
-        await new Promise((resolve) =>
-          requestAnimationFrame(() => requestAnimationFrame(resolve))
-        );
-        AOS.init({
-          duration: 600,
-          easing: 'ease-out',
-          once: true,
-        });
-
         await loadSection('#about', './sections/about.html');
         await loadSection('#capabilities', './sections/capabilities.html');
         await loadSection('#process', './sections/process.html');
@@ -261,16 +294,18 @@
 
         await loadSection('#contact', './sections/contact.html');
 
-        // Defer AOS.refresh out of the inject burst
-        const runAosRefresh = () => {
-          if (typeof AOS === 'undefined' || typeof AOS.refresh !== 'function') return;
-          AOS.refresh();
-        };
-        if (typeof requestIdleCallback === 'function') {
-          requestIdleCallback(runAosRefresh, { timeout: 2000 });
-        } else {
-          requestAnimationFrame(() => requestAnimationFrame(runAosRefresh));
-        }
+        try {
+          await loadScriptOnce(AOS_SRC);
+          await waitForAos(10000);
+          await new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve))
+          );
+          AOS.init({
+            duration: 600,
+            easing: 'ease-out',
+            once: true,
+          });
+        } catch (_) {}
       });
     </script>
   </body>
