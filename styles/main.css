@@ -87,6 +87,8 @@ body {
 html {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
+  /* Avoid horizontal jump when the vertical scrollbar is shown or hidden during load */
+  scrollbar-gutter: stable;
 }
 
 :focus-visible {
@@ -186,6 +188,18 @@ html {
   .intro-video {
     padding-top: 10rem;
   }
+}
+
+/* Hero is fetch-injected; empty header collapses and pushes <main> (intro video) down — largest CLS source */
+#hero:empty {
+  min-height: 100vh;
+}
+
+/* Match Tailwind `h-screen` in main.css so viewport height applies before deferred cdn.tailwindcss.com runs */
+.hero-section {
+  box-sizing: border-box;
+  min-height: 100vh;
+  height: 100vh;
 }
 
 /* About is fetch-injected; reserve one viewport of height while mount is empty to cut CLS when HTML arrives */
