@@ -131,6 +131,47 @@ html {
 }
 
 /* ============================================================
+   INTRO PROMO VIDEO (between hero and about)
+   ============================================================ */
+
+.intro-video {
+  background: radial-gradient(
+    ellipse 150% 100% at center,
+    var(--color-bg-darker) 0%,
+    var(--color-bg-dark) 50%,
+    var(--color-bg-dark) 100%
+  );
+  padding-top: 0;
+  padding-bottom: var(--space-xl);
+}
+
+.intro-video-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.25),
+    0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+  .intro-video {
+    padding-top: 8rem;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .intro-video {
+    padding-top: 10rem;
+  }
+}
+
+/* ============================================================
    SHARED COMPONENT PATTERNS
    ============================================================ */
 
@@ -462,6 +503,31 @@ nav#navbar a:not([class*="logo"]):hover {
   color: var(--opacity-text-strong);
   font-size: var(--text-md);
   text-align: left;
+}
+
+/* How it works (#process): cards height = content; tiny space below CTA */
+#process .services-grid {
+  align-items: start;
+}
+
+/* Override global .services-card padding (e.g. 2.5rem 0 at 2560+) — keep shell tight to content */
+#process .services-card {
+  padding: var(--space-xs) 0 !important;
+}
+
+#process .services-card-content {
+  padding-left: var(--space-lg) !important;
+  padding-right: var(--space-lg) !important;
+}
+
+/* Section intro copy: full width of .content-container (base rules cap at 42rem + min-width 50%) */
+#capabilities .services-description,
+#process .services-description,
+#customers .customers-description,
+#testimonials .testimonials-description {
+  min-width: 0 !important;
+  max-width: none !important;
+  width: 100%;
 }
 
 /* ============================================================
@@ -1277,6 +1343,29 @@ nav#navbar a:not([class*="logo"]):hover {
     height: 88% !important;
   }
 
+  /* Section h2s — 2K: same scale as customers (text-7xl ≈ 60px); min-2560 alone uses text-8xl–9xl */
+  .about-title {
+    font-size: var(--text-7xl) !important;
+  }
+
+  .services-title {
+    font-size: var(--text-7xl) !important;
+  }
+
+  .testimonials-title {
+    font-size: var(--text-7xl) !important;
+  }
+
+  .contact-title {
+    font-size: var(--text-7xl) !important;
+  }
+
+  /* Testimonials — 2K: quote body; min-2560 uses 3.5rem (~56px), too large here */
+  .testimonials-card-text {
+    font-size: 2.5rem !important;
+    line-height: 1.45 !important;
+  }
+
   /* About — 2K: less vertical air + tighter logo row (full rules stay in min-2560 for 4K) */
   .about-trusted {
     margin-top: 5.5rem !important;
@@ -1403,25 +1492,32 @@ nav#navbar a:not([class*="logo"]):hover {
     gap: 3.5rem !important;
   }
 
-  /* How it works (#process): card body uses Tailwind text-*; scale up on 4K only */
+  /* How it works (#process): larger card type + Foundation badge (4K only) */
   #process .services-card-content .services-card-title {
-    font-size: var(--text-5xl) !important;
+    font-size: var(--text-7xl) !important;
+    line-height: 1.1 !important;
   }
 
   #process .services-card-content .services-card-text {
-    font-size: var(--text-3xl) !important;
+    font-size: var(--text-4xl) !important;
+    line-height: 1.35 !important;
   }
 
   #process .services-card-content ul {
-    font-size: var(--text-2xl) !important;
+    font-size: var(--text-3xl) !important;
+    line-height: 1.45 !important;
   }
 
   #process .services-card-content > a {
-    font-size: var(--text-2xl) !important;
+    font-size: var(--text-3xl) !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 
-  #process .services-card.relative > .absolute {
-    font-size: var(--text-sm) !important;
+  #process .process-card-badge {
+    font-size: var(--text-3xl) !important;
+    line-height: 1.2 !important;
+    padding: 0.85rem 1.5rem !important;
   }
 
   .hero-section {
@@ -1485,6 +1581,7 @@ nav#navbar a:not([class*="logo"]):hover {
   /* Content Container */
   .navbar-wrapper .content-container,
   .hero-section .content-container,
+  .intro-video .content-container,
   .about-section .content-container,
   .services-section .content-container,
   .customers-section .content-container,

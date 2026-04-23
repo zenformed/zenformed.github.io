@@ -1,5 +1,5 @@
 <!-- index.html (root) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Basic Meta Tags -->
@@ -34,15 +34,23 @@
 
     <!-- Favicon - Multiple formats and sizes for better search engine compatibility -->
     <!-- Primary ICO file (contains multiple sizes if created as multi-resolution) -->
-    <link rel="icon" href="https://zenformed.com/favicon.ico?v=3" type="image/x-icon" sizes="any" />
     <link
-  rel="shortcut icon"
-  href="https://zenformed.com/favicon.ico?v=3"
-  type="image/x-icon"
-/>
+      rel="icon"
+      href="https://zenformed.com/favicon.ico?v=3"
+      type="image/x-icon"
+      sizes="any"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://zenformed.com/favicon.ico?v=3"
+      type="image/x-icon"
+    />
 
     <!-- Apple touch icon (for iOS and some search engines) -->
-    <link rel="apple-touch-icon" href="https://zenformed.com/apple-touch-icon.png">
+    <link
+      rel="apple-touch-icon"
+      href="https://zenformed.com/apple-touch-icon.png"
+    />
 
     <!-- Preload Critical Resources -->
     <link rel="preload" href="styles/main.css" as="style" />
@@ -167,7 +175,7 @@
       }
     </script>
   </head>
-  <body class="bg-white">
+  <body class="bg-gradient-radial">
     <!-- Sections mount points -->
     <nav
       id="navbar"
@@ -176,6 +184,19 @@
     ></nav>
     <header id="hero"></header>
     <main>
+      <div id="intro-video" class="intro-video">
+        <div class="content-container">
+          <video
+            class="intro-video-player"
+            controls
+            playsinline
+            preload="metadata"
+            aria-label="Zenformed promotional video"
+          >
+            <source src="images/promo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
       <div id="about"></div>
       <div id="capabilities"></div>
       <div id="process"></div>
