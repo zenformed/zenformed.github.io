@@ -2113,7 +2113,7 @@ nav#navbar a:not([class*="logo"]):hover {
 
   /* Hero Section */
   .hero-section {
-    padding-top: 120px !important;
+    padding-top: 90px !important;
     max-width: 100vw !important;
     align-items: flex-start !important;
     overflow: visible !important;
