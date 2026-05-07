@@ -26,9 +26,25 @@
     btn.onclick = toggleMenu;
 
     links.forEach(function(link) {
-      link.onclick = function() {
+      link.onclick = function(event) {
         menu.classList.add('hidden');
         btn.setAttribute('aria-expanded', 'false');
+
+        if (
+          link.getAttribute('href') === '#about' &&
+          window.matchMedia('(max-width: 767px)').matches
+        ) {
+          const aboutContent = document.querySelector('#about .about-content');
+
+          if (aboutContent) {
+            event.preventDefault();
+            aboutContent.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+            history.pushState(null, '', '#about');
+          }
+        }
       };
     });
 

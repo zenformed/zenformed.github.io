@@ -186,31 +186,9 @@
     ></nav>
     <header id="hero"></header>
     <main>
-      <div id="intro-video" class="intro-video">
-        <div class="content-container">
-          <div class="video-container">
-            <video
-              class="intro-video-player"
-              width="1920"
-              height="1080"
-              controls
-              playsinline
-              preload="metadata"
-              aria-label="Zenformed promotional video"
-            >
-              <source src="images/promo.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <p class="intro-video-caption">
-            This is a promotional video for Zenformed. It is a video that shows
-            the features and benefits of Zenformed.
-          </p>
-        </div>
-      </div>
       <div id="about"></div>
-      <div id="capabilities"></div>
+      <!-- <div id="systems"></div> -->
       <div id="process"></div>
-      <div id="customers"></div>
       <div id="testimonials"></div>
     </main>
     <footer id="contact"></footer>
@@ -283,8 +261,8 @@
 
         await loadSection('#about', './sections/about.html');
         await loadSection('#capabilities', './sections/capabilities.html');
+        // await loadSection('#systems', './sections/systems.html');
         await loadSection('#process', './sections/process.html');
-        await loadSection('#customers', './sections/customers.html');
         await loadSection('#testimonials', './sections/testimonials.html');
 
         // Load testimonials carousel script

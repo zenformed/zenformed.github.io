@@ -128,29 +128,73 @@ function fadeIn(element, delay = 0) {
 }
 
 /**
+ * Initialize custom hero video controls
+ */
+function initHeroVideo() {
+  const media = document.querySelector(".hero-right-media");
+  const video = media?.querySelector("video");
+  const button = media?.querySelector(".hero-video-play");
+  const icon = button?.querySelector(".hero-video-play-icon");
+
+  if (!media || !video || !button || !icon) return;
+
+  video.volume = 0.5;
+
+  function syncState() {
+    const isPlaying = !video.paused && !video.ended;
+    media.classList.toggle("is-playing", isPlaying);
+    button.setAttribute("aria-label", isPlaying ? "Pause video" : "Play video");
+    button.setAttribute("aria-pressed", String(isPlaying));
+    icon.dataset.state = isPlaying ? "pause" : "play";
+  }
+
+  async function toggleVideo() {
+    if (video.paused || video.ended) {
+      await video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  button.addEventListener("click", () => {
+    toggleVideo().catch(() => {});
+  });
+
+  video.addEventListener("click", () => {
+    toggleVideo().catch(() => {});
+  });
+
+  video.addEventListener("play", syncState);
+  video.addEventListener("pause", syncState);
+  video.addEventListener("ended", syncState);
+  syncState();
+}
+
+/**
  * Initialize hero animations
  */
 export function initHeroAnimations() {
+  initHeroVideo();
+
   const heroTitle = document.querySelector(".hero-title");
   const heroSubtitle = document.querySelector(".hero-subtitle");
   const heroButtons = document.querySelector(".hero-buttons");
 
   if (!heroTitle) return;
 
-  // Wrap letters in the title
+  // Wrap letters in the title while preserving explicit line breaks.
   wrapLetters(heroTitle);
 
-  // Start title animation immediately
+  // Start title animation immediately.
   animateLetters(heroTitle, 15);
 
-  // Calculate delay for subtitle and buttons (after title animation completes)
-  // Get all letter spans (nested inside word containers) and space spans
+  // Calculate delay for subtitle and buttons (after title animation completes).
   const allSpans = heroTitle.querySelectorAll("span");
   const titleLetters = Array.from(allSpans).filter((span) => {
     return span.parentElement.tagName === "SPAN" || span.children.length === 0;
   });
   const titleAnimationDuration = titleLetters.length * 15;
-  const subtitleDelay = titleAnimationDuration + 200; // 200ms pause after title
+  const subtitleDelay = titleAnimationDuration + 200;
 
   // Fade in subtitle
   if (heroSubtitle) {

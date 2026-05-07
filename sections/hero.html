@@ -1,61 +1,128 @@
 <!-- /sections/hero.html -->
 <section
-  class="relative overflow-hidden bg-gradient-radial text-white h-screen flex items-start pt-40 hero-section"
+  class="relative overflow-hidden bg-gradient-radial text-white min-h-screen hero-section"
 >
-  <div class="relative z-10 content-container">
-    <div class="hero-content">
-      <h1 class="hero-title">Get your business organized and scaling.</h1>
+  <div class="hero-container">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <div class="hero-content">
+          <div class="hero-brand flex items-end gap-3">
+            <img src="./images/zenformed.webp" alt="Zenformed logo" class="h-6 w-6" />
+            <span class="text-2xl tracking-wide lowercase text-white">zenformed</span>
+          </div>
 
-      <p class="text-gray-400 hero-subtitle">
-        Built for businesses that have outgrown basic websites and manual
-        spreadsheets.
-      </p>
+          <h1 class="hero-title">The modern business<br />scaling solution.</h1>
 
-      <div class="flex items-center gap-3 hero-buttons">
-        <a
-          href="#contact"
-          class="inline-flex items-center px-5 py-3 rounded-md bg-white text-black hover:opacity-90 hero-button"
-        >
-          Start a conversation
-        </a>
-        <a
-          href="#capabilities"
-          class="inline-flex items-center px-5 py-3 rounded-md border border-gray-300 hover:bg-gray-50 hover:text-black hero-button"
-        >
-          See how we help
-        </a>
+          <p class="text-gray-400 hero-subtitle">
+            Custom systems, automation, and operational software built around
+            the way your business actually works.
+          </p>
+
+          <div class="hero-actions hero-buttons flex items-center gap-3">
+            <a
+              href="#contact"
+              class="inline-flex items-center px-5 py-3 rounded-md bg-white text-black hover:opacity-90 hero-button"
+            >
+              Start a conversation
+            </a>
+            <a
+              href="#capabilities"
+              class="inline-flex items-center px-5 py-3 rounded-md border border-gray-300 hover:bg-gray-50 hover:text-black hero-button"
+            >
+              See how we help
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-capabilities">
+          <p class="services-label">Capabilities</p>
+          <h2 class="hero-capabilities-title">
+            What we build when websites and spreadsheets are not enough
+          </h2>
+          <p class="hero-capabilities-description">
+            When your business gets too big for manual work and messy files, we
+            build the systems that fix it.
+          </p>
+
+          <div class="services-grid">
+            <div class="services-card">
+              <h3 class="services-card-title">
+                Systems built for your business
+              </h3>
+              <div class="services-card-body">
+                <div class="services-image">
+                  <img
+                    src="./images/speed.webp"
+                    alt="Systems for your business"
+                  />
+                </div>
+                <p class="services-card-text">
+                  Tools designed to handle your specific daily tasks and get the
+                  job done right.
+                </p>
+              </div>
+            </div>
+
+            <div class="services-card">
+              <h3 class="services-card-title">
+                Fix manual work with automation
+              </h3>
+              <div class="services-card-body">
+                <div class="services-image">
+                  <img
+                    src="./images/automation.webp"
+                    alt="Automation systems"
+                  />
+                </div>
+                <p class="services-card-text">
+                  We take your messy spreadsheets and email chains and turn them
+                  into an automated process.
+                </p>
+              </div>
+            </div>
+
+            <div class="services-card">
+              <h3 class="services-card-title">
+                Everything managed in one spot
+              </h3>
+              <div class="services-card-body">
+                <div class="services-image">
+                  <img src="./images/stats.webp" alt="Unified dashboards" />
+                </div>
+                <p class="services-card-text">
+                  Simple dashboards so you can see exactly what's working and
+                  what needs your attention.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-right-media">
+          <div class="video-container">
+            <video
+              class="intro-video-player"
+              width="1920"
+              height="1080"
+              playsinline
+              preload="metadata"
+              aria-label="Zenformed promotional video"
+            >
+              <source src="./images/promo.mp4" type="video/mp4" />
+            </video>
+            <button
+              type="button"
+              class="hero-video-play"
+              aria-label="Play video"
+              aria-pressed="false"
+            >
+              <span class="hero-video-play-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div
-      class="hero-image-wrapper mobile-hero-image-wrapper pointer-events-none"
-    >
-      <img
-        src="./images/ide.webp"
-        alt="Code editor interface showing modern web development"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </div>
   </div>
-
-  <!-- Background image -->
-  <div
-    class="pointer-events-none absolute inset-0 -z-1 opacity-80 flex items-end justify-center hero-image-container"
-  >
-    <div class="rounded-3xl overflow-hidden hero-image-wrapper">
-      <img
-        src="./images/ide.webp"
-        alt=""
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </div>
-  </div>
-
-  <!-- Gradient overlay to fade bottom into color -->
-  <div
-    class="pointer-events-none absolute inset-0 -z-0 hero-gradient-overlay"
-  ></div>
 </section>
