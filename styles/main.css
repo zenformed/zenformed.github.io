@@ -73,6 +73,9 @@
   /* Layout */
   --container-max-width: 72rem;
   --container-padding: var(--space-lg);
+
+  /* Site shell (matches core.zenformed.com/products) */
+  --site-bg: #0c0e12;
 }
 
 /* ============================================================
@@ -80,6 +83,9 @@
    ============================================================ */
 
 body {
+  position: relative;
+  min-height: 100vh;
+  background-color: transparent;
   font-family:
     ui-sans-serif,
     system-ui,
@@ -98,6 +104,32 @@ html {
   overflow-x: hidden !important;
   /* Avoid horizontal jump when the vertical scrollbar is shown or hidden during load */
   scrollbar-gutter: stable;
+  background-color: var(--site-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 55% 45% at 15% -5%,
+      rgba(74, 222, 128, 0.1),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 45% 35% at 85% 0%,
+      rgba(167, 139, 250, 0.12),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(96, 165, 250, 0.12),
+      transparent
+    ),
+    var(--site-bg);
 }
 
 :focus-visible {
@@ -110,12 +142,7 @@ html {
    ============================================================ */
 
 .bg-gradient-radial {
-  background: radial-gradient(
-    ellipse 150% 100% at center,
-    var(--color-bg-darker) 0%,
-    var(--color-bg-dark) 50%,
-    var(--color-bg-dark) 100%
-  );
+  background: transparent;
 }
 
 .hero-gradient-overlay {
@@ -146,12 +173,7 @@ html {
    ============================================================ */
 
 .intro-video {
-  background: radial-gradient(
-    ellipse 150% 100% at center,
-    var(--color-bg-darker) 0%,
-    var(--color-bg-dark) 50%,
-    var(--color-bg-dark) 100%
-  );
+  background: transparent;
   padding-top: 0;
   padding-bottom: var(--space-xl);
 }
