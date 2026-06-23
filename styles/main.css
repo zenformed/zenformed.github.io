@@ -83,6 +83,7 @@
    ============================================================ */
 
 body {
+  margin: 0;
   position: relative;
   min-height: 100vh;
   background-color: transparent;
@@ -330,6 +331,112 @@ nav#navbar a:not([class*="logo"]):hover {
   margin-right: auto;
   padding-left: clamp(1rem, 2.5vw, 3rem);
   padding-right: clamp(1rem, 2.5vw, 3rem);
+}
+
+/* Navbar layout — self-contained; blog pages must not rely on deferred Tailwind CDN */
+nav#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+nav#navbar .navbar-wrapper .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+nav#navbar .navbar-wrapper .navbar-container > a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+nav#navbar .navbar-wrapper .navbar-container img {
+  height: 1.5rem;
+  width: 1.5rem;
+  display: block;
+}
+
+nav#navbar .navbar-desktop-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav#navbar .navbar-desktop-links a {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+nav#navbar #mobile-menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--color-white);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+nav#navbar #mobile-menu-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+#mobile-menu {
+  display: none;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.95);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  border-top: 1px solid var(--opacity-border);
+}
+
+#mobile-menu:not(.hidden) {
+  display: block;
+}
+
+#mobile-menu > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+#mobile-menu a {
+  display: block;
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  nav#navbar .navbar-desktop-links {
+    display: flex;
+  }
+
+  nav#navbar #mobile-menu-button {
+    display: none;
+  }
+
+  #mobile-menu {
+    display: none !important;
+  }
 }
 
 /* ============================================================

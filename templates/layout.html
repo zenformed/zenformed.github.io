@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0c0e12" />
+    <link rel="canonical" href="{{CANONICAL_URL}}" />
+    <meta property="og:type" content="{{OG_TYPE}}" />
+    <meta property="og:url" content="{{CANONICAL_URL}}" />
+    <meta property="og:title" content="{{OG_TITLE}}" />
+    <meta property="og:description" content="{{OG_DESCRIPTION}}" />
+    <meta property="og:site_name" content="Zenformed" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{OG_TITLE}}" />
+    <meta name="twitter:description" content="{{OG_DESCRIPTION}}" />
+    <link
+      rel="icon"
+      href="https://zenformed.com/favicon.ico?v=3"
+      type="image/x-icon"
+      sizes="any"
+    />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="stylesheet" href="/styles/main.css?v=20260624" />
+    <link rel="stylesheet" href="/styles/blog.css?v=4" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+  </head>
+  <body class="bg-gradient-radial blog-page">
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-white/10"
+      style="background-color: #121418;"
+    >
+      {{NAVBAR_BAR}}
+    </nav>
+    {{NAVBAR_MOBILE}}
+    <main class="blog-main">
+      {{BODY}}
+    </main>
+    <script src="/js/navbar.js" defer></script>
+  </body>
+</html>
