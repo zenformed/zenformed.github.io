@@ -104,6 +104,10 @@ function validatePost(data, fileName) {
   }
 }
 
+function isDraftPost(data) {
+  return data.draft === true || String(data.draft).toLowerCase() === "true";
+}
+
 async function loadPosts() {
   let entries;
   try {
@@ -116,6 +120,7 @@ async function loadPosts() {
   }
 
   const posts = [];
+  let draftCount = 0;
 
   for (const entry of entries) {
     if (!entry.endsWith(".md")) {
@@ -125,6 +130,11 @@ async function loadPosts() {
     const filePath = path.join(POSTS_DIR, entry);
     const source = await fs.readFile(filePath, "utf8");
     const { data, content } = matter(source);
+
+    if (isDraftPost(data)) {
+      draftCount += 1;
+      continue;
+    }
 
     validatePost(data, entry);
 
@@ -153,6 +163,10 @@ async function loadPosts() {
   const duplicates = slugs.filter((slug, index) => slugs.indexOf(slug) !== index);
   if (duplicates.length > 0) {
     throw new Error(`Duplicate blog slugs found: ${[...new Set(duplicates)].join(", ")}`);
+  }
+
+  if (draftCount > 0) {
+    console.log(`Skipped ${draftCount} draft post(s).`);
   }
 
   return posts;
