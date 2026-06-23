@@ -4,7 +4,7 @@ description: >-
   Learn how BuildCore helps construction teams track approvals for selections,
   change requests, and deliverables to reduce disputes and delays.
 slug: customer-approval-workflows-construction-projects
-date: '2026-06-23'
+date: '2026-07-06'
 tags:
   - buildcore
   - approvals
@@ -12,8 +12,10 @@ tags:
   - disputes
   - construction-project-management
 app: buildcore
-draft: true
+draft: false
+publishDate: '2026-07-06'
 ---
+
 # Customer Approval Workflows for Construction Projects
 
 Customer approvals can make or break a project.
@@ -66,6 +68,7 @@ In most construction environments, approvals should be required for:
 Selections include finish materials, fixtures, colors, equipment, appliances, and other items the customer chooses from options or allowances.
 
 Examples:
+
 - Flooring and tile
 - Cabinet finishes
 - Lighting fixtures
@@ -81,6 +84,7 @@ These decisions affect pricing, lead times, and installation sequencing. They sh
 Any change to scope, cost, schedule, or material should trigger a documented approval step.
 
 Examples:
+
 - Adding a new outlet
 - Changing a countertop material
 - Relocating a wall
@@ -94,6 +98,7 @@ Even small changes can have ripple effects. A simple “yes” in a message thre
 Deliverables are the items the customer is expected to review and accept at defined stages.
 
 Examples:
+
 - Shop drawings
 - Submittals
 - Mockups
@@ -193,6 +198,7 @@ If the person requesting the change is not the person authorized to approve it, 
 A common mistake is treating communication as approval.
 
 A customer may:
+
 - Ask questions
 - Express preference
 - Say they “like” an option
@@ -209,12 +215,14 @@ This matters because construction teams move fast. Crews need to know whether th
 ### Good approval language is specific
 
 Instead of:
+
 - “Looks good”
 - “Go ahead”
 - “Approved”
 - “Sounds fine”
 
 Use:
+
 - “Approved as submitted”
 - “Approved with the noted revision”
 - “Approved for procurement”
@@ -236,6 +244,7 @@ When selections drag, the schedule drags with them. Cabinets cannot be ordered, 
 List all required selections by trade and deadline.
 
 Include:
+
 - Item
 - Decision owner
 - Lead time
@@ -251,6 +260,7 @@ This gives the customer a roadmap and gives the team a way to track what is stil
 Customers make decisions faster when options are organized.
 
 For each selection, provide:
+
 - Approved options
 - Any allowance or budget context
 - Material samples or links
@@ -262,6 +272,7 @@ Avoid sending a long, unstructured list of product names with no context.
 ### Step 3: Capture the decision in writing
 
 Once the customer chooses, record:
+
 - Exact product or finish
 - Quantity or location if relevant
 - Date approved
@@ -273,6 +284,7 @@ If the customer changes their mind later, there should be a clear trail showing 
 ### Step 4: Confirm procurement alignment
 
 Before ordering, make sure the approved selection matches:
+
 - Budget
 - Spec
 - Drawing revision
@@ -286,6 +298,7 @@ A selection can be approved by the customer and still need internal review if it
 The closer the job gets to install, the more expensive a last-minute change becomes.
 
 A good workflow includes a cutoff date after which changes may trigger:
+
 - Additional cost
 - Schedule adjustment
 - Restocking fees
@@ -322,6 +335,7 @@ If a change is urgent and work must proceed before formal approval, that excepti
 When the change is discovered, the field team should log it right away rather than waiting until the end of the week.
 
 Examples:
+
 - Existing conditions differ from plan
 - The owner requested a new layout
 - A design revision affects installed work
@@ -336,6 +350,7 @@ Use photos, marked-up plans, and concise descriptions. The more visual the recor
 Even if the exact cost is not final, the customer should see the likely impact before approving.
 
 A good change request tells them:
+
 - What is changing
 - Why it is changing
 - What it will cost
@@ -349,6 +364,7 @@ This is the cleanest path. If work starts before approval, the team is exposed t
 ### 5. Track approval status until closed
 
 A change request should not disappear into email. It should remain open until:
+
 - Approved
 - Rejected
 - Withdrawn
@@ -389,6 +405,7 @@ If a customer accepts a milestone or final deliverable without written record, l
 The customer should know what they are reviewing and what “approved” means.
 
 For example:
+
 - Approved for fabrication
 - Approved as compliant with contract
 - Approved with comments
@@ -399,6 +416,7 @@ For example:
 Approvals are easier when they are linked to schedule milestones.
 
 This helps answer:
+
 - What is due now?
 - What is waiting on the customer?
 - What work can proceed after approval?
@@ -412,11 +430,13 @@ Avoid having the approval in one email and the comments in another thread that n
 ### 4. Confirm what approval does and does not mean
 
 A deliverable approval may mean:
+
 - The item is acceptable for the next step
 - The customer accepts the design direction
 - The customer has reviewed and has no objection
 
 It may not mean:
+
 - Final warranty acceptance
 - Acceptance of unrelated scope
 - Approval of extra work not listed
@@ -444,6 +464,7 @@ Documentation is not just about legal protection. It is about operational clarit
 ### Keep one source of truth
 
 The biggest documentation problem on many projects is fragmentation:
+
 - Text messages on one phone
 - Email in multiple inboxes
 - Handwritten notes in a trailer
@@ -471,6 +492,7 @@ Every approval request should have a due date.
 #### 3. Follow up consistently
 
 Use a predictable follow-up cadence:
+
 - Initial request
 - Reminder after a set period
 - Escalation if still pending
@@ -509,6 +531,7 @@ The more consistent the team is, the less room there is for mixed messages.
 Many contractors are moving toward systems like BuildCore or BuildCore-style workflows to manage approvals more consistently. The value is not just in storing documents. It is in creating a repeatable process for routing requests, capturing responses, and keeping related records together.
 
 In practice, that can help teams:
+
 - Standardize approval requests
 - Track status across projects
 - Attach photos and supporting documents

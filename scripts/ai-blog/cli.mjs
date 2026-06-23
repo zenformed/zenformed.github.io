@@ -8,6 +8,7 @@ function parseArgs(argv) {
     count: 1,
     provider: "mock",
     overwrite: false,
+    schedule: false,
   };
 
   for (const arg of argv) {
@@ -19,6 +20,8 @@ function parseArgs(argv) {
       options.topicId = arg.slice("--topic=".length);
     } else if (arg === "--overwrite") {
       options.overwrite = true;
+    } else if (arg === "--schedule") {
+      options.schedule = true;
     } else if (arg === "--help" || arg === "-h") {
       options.help = true;
     }
@@ -35,12 +38,14 @@ Options:
   --provider=NAME    Generator provider: mock | openai (default: mock)
   --topic=TOPIC_ID   Target a specific topic from the catalog
   --overwrite        Replace an existing post file with the same slug
+  --schedule         Stagger publishDate across the batch (today + N days)
   --help             Show this help
 
 Examples:
   npm run generate:blog
   npm run generate:blog -- --count=3
   npm run generate:blog -- --count=1 --provider=openai
+  npm run generate:blog -- --count=10 --provider=openai --schedule
   npm run generate:blog -- --provider=openai --topic=customer-approval-workflows
 
 Environment (OpenAI provider only):
@@ -82,10 +87,17 @@ async function main() {
     provider: options.provider,
     topicId: options.topicId,
     overwrite: options.overwrite,
+    schedule: options.schedule,
   });
 
   console.log(`\nDone. Generated ${results.length} draft article(s).`);
-  console.log("Next: review markdown in content/blog/posts/, then set draft: false to publish.");
+  if (options.schedule) {
+    console.log(
+      "Scheduled publishDate values were written to frontmatter. Set draft: false to publish on each date.",
+    );
+  } else {
+    console.log("Next: review markdown in content/blog/posts/, then set draft: false to publish.");
+  }
 }
 
 main().catch((error) => {

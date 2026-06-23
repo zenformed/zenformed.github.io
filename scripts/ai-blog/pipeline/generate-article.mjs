@@ -4,6 +4,7 @@ import { createArticleGenerator } from "../providers/index.mjs";
 import { resolveTopics } from "./topic-selector.mjs";
 import { loadExistingSlugs } from "./slug.mjs";
 import { writeGeneratedPost } from "./write-post.mjs";
+import { addDaysToIsoDate, todayIsoDate } from "./dates.mjs";
 import { sleep } from "../utils/text.mjs";
 
 /**
@@ -12,12 +13,14 @@ import { sleep } from "../utils/text.mjs";
  * @param {"mock" | "openai"} [options.provider]
  * @param {string} [options.topicId]
  * @param {boolean} [options.overwrite]
+ * @param {boolean} [options.schedule]
  */
 export async function generateArticles({
   count,
   provider = GENERATION_DEFAULTS.provider,
   topicId,
   overwrite = false,
+  schedule = false,
 }) {
   const generator = createArticleGenerator(provider);
   const reservedSlugs = await loadExistingSlugs();
@@ -25,6 +28,7 @@ export async function generateArticles({
   const results = [];
   const batchDelayMs =
     provider === "openai" ? getOpenAIConfig().batchDelayMs : 0;
+  const scheduleBaseDate = todayIsoDate();
 
   for (let index = 0; index < topics.length; index += 1) {
     const topic = topics[index];
@@ -44,6 +48,10 @@ export async function generateArticles({
       overwrite,
     });
 
+    if (schedule) {
+      article.metadata.publishDate = addDaysToIsoDate(scheduleBaseDate, index);
+    }
+
     const filePath = await writeGeneratedPost(article, { overwrite });
 
     results.push({
@@ -52,11 +60,16 @@ export async function generateArticles({
       title: article.metadata.title,
       wordCount: article.wordCount,
       draft: article.metadata.draft,
+      publishDate: article.metadata.publishDate,
       topicId: topic.id,
     });
 
+    const scheduleNote = article.metadata.publishDate
+      ? `, publishDate: ${article.metadata.publishDate}`
+      : "";
+
     console.log(
-      `Generated draft: ${article.metadata.slug} (${article.wordCount} words) → ${filePath}`,
+      `Generated draft: ${article.metadata.slug} (${article.wordCount} words${scheduleNote}) → ${filePath}`,
     );
   }
 

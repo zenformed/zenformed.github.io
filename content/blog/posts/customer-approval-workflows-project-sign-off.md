@@ -4,7 +4,7 @@ description: >-
   Learn how customer approval workflows help construction teams capture sign-off
   on selections, change requests, and deliverables with less dispute.
 slug: customer-approval-workflows-project-sign-off
-date: '2026-06-23'
+date: '2026-07-08'
 tags:
   - buildcore
   - customer-approvals
@@ -16,6 +16,7 @@ app: buildcore
 relatedProducts:
   - buildcore
 draft: false
+publishDate: '2026-07-08'
 ---
 ## Why Customer Approval Workflows Matter on Construction Projects
 

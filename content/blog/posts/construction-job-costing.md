@@ -4,7 +4,7 @@ description: >-
   How construction teams improve job costing with clearer handoffs, fewer
   surprises, and job records that match reality.
 slug: construction-job-costing
-date: '2026-06-23'
+date: '2026-06-25'
 tags:
   - buildcore
   - job-costing
@@ -12,6 +12,7 @@ tags:
   - construction
 app: buildcore
 draft: false
+publishDate: '2026-06-25'
 ---
 
 Understanding true cost by phase, trade, and change event. For construction businesses and contractors and project managers, improving job costing is less about buying software and more about removing silent failure points between the field, the office, and the customer.

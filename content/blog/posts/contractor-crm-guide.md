@@ -1,12 +1,16 @@
 ---
 title: Contractor CRM Guide
-description: How contractors can manage leads, projects, and customers without spreadsheets and inbox chaos.
+description: >-
+  How contractors can manage leads, projects, and customers without spreadsheets
+  and inbox chaos.
 slug: contractor-crm-guide
 app: buildcore
-date: "2026-06-23"
+date: '2026-07-02'
 tags:
   - buildcore
   - crm
+draft: false
+publishDate: '2026-07-02'
 ---
 
 Growing contractors hit the same wall: leads live in text threads, job details sit in email, and invoices get chased from a spreadsheet nobody trusts. A CRM built for field work fixes that by giving every customer, project, and next step one home.

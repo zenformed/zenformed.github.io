@@ -6,6 +6,7 @@
  * @property {string} description
  * @property {string} slug
  * @property {string} date
+ * @property {string} [publishDate]
  * @property {string[]} tags
  * @property {string} app
  * @property {string[]} relatedProducts

@@ -7,7 +7,7 @@ import matter from "gray-matter";
  * @param {string} body
  */
 export function serializePost(metadata, body) {
-  return matter.stringify(body.trim() + "\n", {
+  const frontmatter = {
     title: metadata.title,
     description: metadata.description,
     slug: metadata.slug,
@@ -16,5 +16,11 @@ export function serializePost(metadata, body) {
     app: metadata.app,
     relatedProducts: metadata.relatedProducts,
     draft: metadata.draft,
-  });
+  };
+
+  if (metadata.publishDate) {
+    frontmatter.publishDate = metadata.publishDate;
+  }
+
+  return matter.stringify(body.trim() + "\n", frontmatter);
 }
