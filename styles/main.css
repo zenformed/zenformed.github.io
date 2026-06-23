@@ -216,6 +216,14 @@ html {
   min-height: 100vh;
 }
 
+#products:empty {
+  min-height: 20rem;
+}
+
+#products {
+  width: 100%;
+}
+
 /* ============================================================
    SHARED COMPONENT PATTERNS
    ============================================================ */
@@ -505,7 +513,16 @@ nav#navbar a:not([class*="logo"]):hover {
   vertical-align: baseline;
 }
 
+.hero-title-highlight {
+  background: linear-gradient(90deg, #67e8f9 0%, #a78bfa 55%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* How it works (#process): cards height = content; tiny space below CTA */
 .hero-subtitle,
+.hero-title,
 .hero-buttons {
   opacity: 0;
 }
@@ -877,6 +894,50 @@ nav#navbar a:not([class*="logo"]):hover {
   align-items: start;
 }
 
+@keyframes rgb-border-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.process-card-rgb-wrap {
+  position: relative;
+  padding: 2px;
+  border-radius: calc(var(--radius-xl) + 2px);
+  background: linear-gradient(
+    90deg,
+    #119247,
+    #22d3ee,
+    #818cf8,
+    #c084fc,
+    #f472b6,
+    #119247
+  );
+  background-size: 200% 100%;
+  animation: rgb-border-shift 5s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .process-card-rgb-wrap {
+    transform: scale(1.03);
+    transform-origin: top center;
+  }
+}
+
+.process-card-rgb-wrap > .services-card {
+  height: 100%;
+  border: none;
+  background-color: var(--color-bg-card);
+}
+
+.process-card-featured {
+  overflow: visible;
+}
+
 /* Systems: equal-height cards per row; CTA pinned to bottom when copy differs */
 #systems .services-grid {
   align-items: stretch;
@@ -884,7 +945,8 @@ nav#navbar a:not([class*="logo"]):hover {
 
 /* Override global .services-card padding (e.g. 2.5rem 0 at 2560+) — keep shell tight to content */
 #process .services-card,
-#systems .services-card {
+#systems .services-card,
+.pricing-plans-page .services-card {
   padding: var(--space-xs) 0 !important;
 }
 
@@ -893,12 +955,14 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 #process .services-card-content,
-#systems .services-card-content {
+#systems .services-card-content,
+.pricing-plans-page .services-card-content {
   padding-left: var(--space-lg) !important;
   padding-right: var(--space-lg) !important;
 }
 
-#systems .services-card-content {
+#systems .services-card-content,
+.pricing-plans-page .services-card-content {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -906,7 +970,8 @@ nav#navbar a:not([class*="logo"]):hover {
   height: 100%;
 }
 
-#systems .services-card-content > a {
+#systems .services-card-content > a,
+.pricing-plans-page .services-card-content > a {
   margin-top: auto;
 }
 
@@ -923,10 +988,156 @@ nav#navbar a:not([class*="logo"]):hover {
 #process .services-description,
 #systems .services-description,
 #customers .customers-description,
-#testimonials .testimonials-description {
+#testimonials .testimonials-description,
+.pricing-plans-page .services-description {
   min-width: 0 !important;
   max-width: none !important;
   width: 100%;
+}
+
+/* ============================================================
+   PRICING PLANS (product plan pages)
+   ============================================================ */
+
+.pricing-plans-page {
+  padding-top: 5rem;
+}
+
+.pricing-plans-intro {
+  margin-bottom: var(--space-md);
+}
+
+.pricing-plans-storage-highlight {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-gray-300);
+  font-size: var(--text-md);
+  line-height: 1.5;
+}
+
+.pricing-plans-billing-toggle {
+  margin: 0 0 var(--space-2xl);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.billing-toggle {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 0.25rem;
+  border: 1px solid var(--opacity-border);
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.billing-toggle-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-gray-300);
+  font-size: var(--text-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.billing-toggle-option:hover {
+  color: var(--color-white);
+}
+
+.billing-toggle-option--active {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.billing-toggle-option--active:hover {
+  color: var(--color-black);
+}
+
+.billing-toggle-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--opacity-text-light);
+}
+
+.billing-toggle-option--active .billing-toggle-label {
+  color: var(--color-gray-600);
+}
+
+.pricing-plans-grid {
+  align-items: start;
+}
+
+.pricing-plan-price-wrap {
+  margin: 0 0 var(--space-md);
+}
+
+.pricing-plan-price {
+  margin: 0;
+  color: var(--color-white);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pricing-plan-price-detail {
+  margin: var(--space-xs) 0 0;
+  color: var(--color-gray-400);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.pricing-plan-price-detail.hidden {
+  display: none;
+}
+
+.pricing-plan-specs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--opacity-border);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.pricing-plan-file-benefit {
+  margin: 0 0 var(--space-md);
+  color: var(--color-gray-300);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.pricing-plan-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.pricing-plan-spec dt {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--opacity-text-light);
+}
+
+.pricing-plan-spec dd {
+  margin: 0;
+  color: var(--color-white);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.pricing-plan-features {
+  flex-grow: 1;
 }
 
 /* ============================================================
@@ -1953,35 +2164,41 @@ nav#navbar a:not([class*="logo"]):hover {
 
   /* How it works (#process), Systems (#systems): larger card type + Foundation badge (4K only) */
   #process .services-card-content .services-card-title,
-  #systems .services-card-content .services-card-title {
+  #systems .services-card-content .services-card-title,
+  .pricing-plans-page .services-card-content .services-card-title {
     font-size: var(--text-7xl) !important;
     line-height: 1.1 !important;
   }
 
   #process .services-card-content .services-card-text,
-  #systems .services-card-content .services-card-text {
+  #systems .services-card-content .services-card-text,
+  .pricing-plans-page .services-card-content .services-card-text {
     font-size: var(--text-4xl) !important;
     line-height: 1.35 !important;
   }
 
   #process .services-card-content ul,
-  #systems .services-card-content ul {
+  #systems .services-card-content ul,
+  .pricing-plans-page .services-card-content ul {
     font-size: var(--text-3xl) !important;
     line-height: 1.45 !important;
   }
 
-  #process .process-card-price {
+  #process .process-card-price,
+  .pricing-plans-page .pricing-plan-price {
     font-size: var(--text-4xl) !important;
   }
 
   #process .services-card-content > a,
-  #systems .services-card-content > a {
+  #systems .services-card-content > a,
+  .pricing-plans-page .services-card-content > a {
     font-size: var(--text-3xl) !important;
     padding-top: 1.25rem !important;
     padding-bottom: 1.25rem !important;
   }
 
-  #process .process-card-badge {
+  #process .process-card-badge,
+  .pricing-plans-page .pricing-plan-badge {
     font-size: var(--text-3xl) !important;
     line-height: 1.2 !important;
     padding: 0.85rem 1.5rem !important;

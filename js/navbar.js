@@ -30,20 +30,24 @@
         menu.classList.add('hidden');
         btn.setAttribute('aria-expanded', 'false');
 
-        if (
-          link.getAttribute('href') === '#about' &&
-          window.matchMedia('(max-width: 767px)').matches
-        ) {
-          const aboutContent = document.querySelector('#about .about-content');
+        const href = link.getAttribute('href');
+        if (!href || href.indexOf('#') === -1) {
+          return;
+        }
 
-          if (aboutContent) {
-            event.preventDefault();
-            aboutContent.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
-            });
-            history.pushState(null, '', '#about');
-          }
+        const hash = '#' + href.split('#')[1];
+        const section = document.querySelector(hash);
+        const onHomepage =
+          window.location.pathname === '/' ||
+          window.location.pathname.endsWith('/index.html');
+
+        if (section && onHomepage) {
+          event.preventDefault();
+          section.scrollIntoView({
+            behavior: 'smooth',
+            block: hash === '#about' ? 'center' : 'start',
+          });
+          history.pushState(null, '', hash);
         }
       };
     });
