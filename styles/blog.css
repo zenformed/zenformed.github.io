@@ -7,16 +7,18 @@
 
 .blog-main {
   margin: 0;
-  padding-top: 5rem;
-  padding-bottom: var(--space-3xl);
+  padding: 5rem var(--container-padding) var(--space-3xl);
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .blog-shell {
-  width: 100%;
+  box-sizing: border-box;
   max-width: 42rem;
+  min-width: 0;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--container-padding);
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
 }
 
 .blog-header {
@@ -61,11 +63,14 @@
   align-items: center;
   gap: var(--space-md);
   margin-bottom: var(--space-sm);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .blog-card-heading .blog-card-title,
 .blog-article-title-row .blog-article-title {
   margin-bottom: 0;
+  min-width: 0;
 }
 
 .blog-app-icon-link,
@@ -95,6 +100,8 @@
 
 .blog-card {
   display: block;
+  box-sizing: border-box;
+  max-width: 100%;
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
   border: 1px solid var(--opacity-border);
@@ -219,6 +226,14 @@
   font-size: var(--text-md);
   line-height: 1.75;
   color: var(--opacity-text-strongest);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
 }
 
 .blog-prose > *:first-child {
@@ -312,6 +327,7 @@
   margin: var(--space-lg) 0;
   padding: var(--space-lg);
   overflow-x: auto;
+  max-width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--opacity-border);
   background: var(--color-bg-card);
@@ -338,6 +354,8 @@
 .blog-product-cta {
   position: relative;
   overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
   border-radius: var(--radius-xl);
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
@@ -365,6 +383,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  box-sizing: border-box;
+  max-width: 100%;
   padding: var(--blog-cta-pad-y) var(--blog-cta-pad-x);
 }
 
@@ -566,7 +586,12 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
+  .blog-main {
+    padding-left: clamp(1rem, 2.5vw, var(--container-padding));
+    padding-right: clamp(1rem, 2.5vw, var(--container-padding));
+  }
+
   .blog-shell {
     padding-top: var(--space-xl);
     padding-bottom: var(--space-2xl);
@@ -582,5 +607,12 @@
 
   .blog-card {
     padding: var(--space-lg);
+  }
+
+  .blog-product-cta__button {
+    white-space: normal;
+    text-align: center;
+    min-width: 0;
+    width: 100%;
   }
 }

@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Construction Job Costing by Phase, Trade, and Change Event — Zenformed</title>
+    <meta name="description" content="Learn construction job costing with phase, trade, and change-event tracking to spot variance, control labor and materials, and improve estimates." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0c0e12" />
+    <link rel="canonical" href="https://zenformed.com/blog/construction-job-costing-by-phase-trade-and-change-event/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://zenformed.com/blog/construction-job-costing-by-phase-trade-and-change-event/" />
+    <meta property="og:title" content="Construction Job Costing by Phase, Trade, and Change Event — Zenformed" />
+    <meta property="og:description" content="Learn construction job costing with phase, trade, and change-event tracking to spot variance, control labor and materials, and improve estimates." />
+    <meta property="og:site_name" content="Zenformed" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Construction Job Costing by Phase, Trade, and Change Event — Zenformed" />
+    <meta name="twitter:description" content="Learn construction job costing with phase, trade, and change-event tracking to spot variance, control labor and materials, and improve estimates." />
+    <link
+      rel="icon"
+      href="https://zenformed.com/favicon.ico?v=3"
+      type="image/x-icon"
+      sizes="any"
+    />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="stylesheet" href="/styles/main.css?v=20260625" />
+    <link rel="stylesheet" href="/styles/blog.css?v=16" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+  </head>
+  <body class="bg-gradient-radial blog-page">
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-white/10"
+      style="background-color: #121418;"
+    >
+      <!-- /sections/navbar.html -->
+<div class="navbar-wrapper">
+  <div class="flex items-center justify-between h-16 navbar-container">
+    <!-- Logo and Brand Name -->
+    <a
+      href="/"
+      class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+    >
+      <img src="/images/zenformed.webp" alt="Zenformed logo" class="h-6 w-6" />
+      <span class="text-2xl tracking-wide lowercase text-white">zenformed</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="navbar-desktop-links hidden md:flex items-center gap-8">
+      <a href="/#about" class="text-white hover:text-gray-300 transition-colors"
+        >About</a
+      >
+      <!-- <a
+        href="#systems"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Systems</a
+      > -->
+      <a
+        href="/#products"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Products</a
+      >
+      <a
+        href="/blog/"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Blog</a
+      >
+      <a
+        href="/#testimonials"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Reviews</a
+      >
+      <a
+        href="/#contact"
+        class="text-white hover:text-gray-300 transition-colors"
+        >Contact</a
+      >
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-white p-2"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
+    </nav>
+    <!-- Mobile Dropdown Menu -->
+<div
+  id="mobile-menu"
+  class="hidden md:hidden fixed top-16 left-0 right-0 h-[calc(100vh-4rem)] bg-black/95 backdrop-blur-[50px] border-t border-white/10"
+  role="menu"
+>
+  <div class="px-6 py-4 space-y-4">
+    <a href="/#about" class="block text-white text-3xl" role="menuitem">About</a>
+    <!-- <a href="#systems" class="block text-white text-3xl" role="menuitem"
+      >Systems</a
+    > -->
+    <a href="/#products" class="block text-white text-3xl" role="menuitem"
+      >Products</a
+    >
+    <a href="/blog/" class="block text-white text-3xl" role="menuitem">Blog</a>
+    <a href="/#testimonials" class="block text-white text-3xl" role="menuitem"
+      >Reviews</a
+    >
+    <a href="/#contact" class="block text-white text-3xl" role="menuitem"
+      >Contact</a
+    >
+  </div>
+</div>
+    <main class="blog-main">
+      <article class="blog-shell blog-article">
+  <header class="blog-article-header">
+  <p class="blog-eyebrow">
+    <a href="/blog/" class="blog-back-link">← Back to blog</a>
+  </p>
+    <div class="blog-article-title-row"><a href="https://core.zenformed.com/products/buildcore" class="blog-app-icon-link" aria-label="BuildCore"><img src="/images/zenformed-app-icons/buildcore.png" alt="" class="blog-app-icon" width="32" height="32" loading="lazy" /></a><h1 class="blog-article-title">Construction Job Costing by Phase, Trade, and Change Event</h1></div>
+    <p class="blog-article-description">Learn construction job costing with phase, trade, and change-event tracking to spot variance, control labor and materials, and improve estimates.</p>
+    <div class="blog-article-meta">
+      <time class="blog-date" datetime="2026-06-24">June 24, 2026</time>
+      <div class="blog-card-tags blog-article-tags"><span class="blog-tag">buildcore</span><span class="blog-tag">construction job costing</span><span class="blog-tag">job cost tracking</span><span class="blog-tag">variance analysis</span><span class="blog-tag">profitable estimating</span></div>
+    </div>
+  </header>
+  <div class="blog-prose">
+    <h1>Construction Job Costing by Phase, Trade, and Change Event</h1>
+<p>Construction job costing is only useful when it tells you <em>where</em> the money moved, <em>why</em> it moved, and <em>what</em> to do before the next project repeats the same pattern. If your team only reviews total job profit at the end, you’re reacting too late. The real value comes from breaking cost down by phase, trade, and change event so project managers, estimators, and field crews can see the story while the job is still active.</p>
+<p>That story matters because construction costs rarely drift in a straight line. Labor overruns may start in framing, but the root cause could be a delayed decision, a missing material, or a scope gap buried in the estimate. Material waste may show up in finish trades, but the problem might have started with poor takeoff assumptions. A platform like BuildCore helps teams connect those dots by tying project documentation, approvals, and reporting back to the job cost structure instead of leaving everything in separate spreadsheets and inboxes.</p>
+<h2>Why construction job costing must be broken down by phase, trade, and change event</h2>
+<p>A single “total job cost” number is too blunt to manage a real project. By the time you see an overrun at the end, you’ve already lost the chance to correct it. Breaking costs into phase, trade, and change event gives you three different views of the same project:</p>
+<ul>
+<li><strong>Phase</strong> shows when cost pressure appears</li>
+<li><strong>Trade</strong> shows who or what scope is driving it</li>
+<li><strong>Change event</strong> shows whether the cost was planned, approved, or absorbed</li>
+</ul>
+<p>That structure helps both field and office teams make better decisions.</p>
+<h3>Phase-based cost visibility</h3>
+<p>Phase costing groups labor, materials, equipment, and subcontractor spend by project stage, such as:</p>
+<ul>
+<li>Preconstruction</li>
+<li>Sitework</li>
+<li>Foundation</li>
+<li>Framing</li>
+<li>MEP rough-in</li>
+<li>Drywall and finishes</li>
+<li>Closeout</li>
+</ul>
+<p>This matters because some overruns are phase-specific. For example, if foundation labor is trending high, the issue may be layout errors, access constraints, or weather. If finish costs are climbing, you may be seeing rework, late selections, or scope creep.</p>
+<h3>Trade-based cost visibility</h3>
+<p>Trade-level costing shows where the budget is being consumed across scopes like:</p>
+<ul>
+<li>Concrete</li>
+<li>Framing</li>
+<li>Electrical</li>
+<li>Plumbing</li>
+<li>HVAC</li>
+<li>Drywall</li>
+<li>Painting</li>
+<li>Flooring</li>
+</ul>
+<p>This is where construction job costing becomes useful for estimating. If electrical consistently runs over on certain project types, the estimate may be too light on device counts, coordination time, or overtime exposure. If framing labor is always under control but materials are not, your waste factor or procurement process may need attention.</p>
+<h3>Change-event cost visibility</h3>
+<p>Change events are the hidden profit killers. They include:</p>
+<ul>
+<li>Owner-requested scope changes</li>
+<li>Design revisions</li>
+<li>Field conditions</li>
+<li>Code-driven changes</li>
+<li>Coordination conflicts</li>
+<li>Material substitutions</li>
+<li>Schedule acceleration</li>
+</ul>
+<p>If change events are not tracked separately, they get absorbed into “job cost” and distort performance. The team may think the project was poorly managed when the real issue was unapproved scope growth. The system is especially useful here because approvals, task assignments, and documentation can be tied to the event itself, not just the final invoice.</p>
+<h2>The cost categories that actually matter in the field</h2>
+<p>To make construction job costing actionable, you need categories that match how the work is performed. If your cost codes are too broad, you won’t know what changed. If they’re too detailed, the field won’t use them consistently.</p>
+<p>A practical structure usually includes:</p>
+<ol>
+<li><strong>Labor</strong></li>
+<li><strong>Materials</strong></li>
+<li><strong>Equipment</strong></li>
+<li><strong>Subcontractors</strong></li>
+<li><strong>Permits and fees</strong></li>
+<li><strong>Overhead allocations</strong></li>
+<li><strong>Change-related costs</strong></li>
+</ol>
+<h3>Labor: track time where the work happens</h3>
+<p>Labor is usually the largest variable. It should be tracked by:</p>
+<ul>
+<li>Phase</li>
+<li>Trade</li>
+<li>Crew</li>
+<li>Cost code</li>
+<li>Date or week</li>
+</ul>
+<p>The key is to separate productive labor from non-productive labor when possible. For example:</p>
+<ul>
+<li>Installing ductwork = productive</li>
+<li>Waiting for access = non-productive</li>
+<li>Rework due to coordination issue = corrective labor</li>
+</ul>
+<p>A foreman does not need to become an accountant, but the daily report should capture enough detail to explain the hours. If the field team logs labor against a clear task structure, your CRM or project tracking system can roll that data into job cost reporting without extra cleanup later.</p>
+<h3>Materials: tie usage to the phase and the change</h3>
+<p>Material cost problems often show up as one of three issues:</p>
+<ul>
+<li>Wrong quantity</li>
+<li>Wrong price</li>
+<li>Wrong timing</li>
+</ul>
+<p>Wrong quantity may come from a bad takeoff or waste. Wrong price may come from a missed escalation or supplier change. Wrong timing may cause rush freight or double handling.</p>
+<p>For example, if framing lumber costs spike mid-job, you need to know whether the overrun came from a design change, a delayed order, or site damage. That distinction matters when you review the job later and when you negotiate with vendors or owners.</p>
+<h3>Subcontractors: watch scope boundaries</h3>
+<p>Subcontractor cost overruns often happen at the handoff points. A scope gap between drywall and paint, or between electrical rough-in and trim, can create extra charges that were never included in the original budget.</p>
+<p>Track subcontractor costs with:</p>
+<ul>
+<li>Original contract amount</li>
+<li>Approved change orders</li>
+<li>Pending changes</li>
+<li>Back charges</li>
+<li>Retainage</li>
+<li>Invoice status</li>
+</ul>
+<p>That way, you can see whether the trade is actually over budget or whether the budget was incomplete from the start.</p>
+<h2>How to build a phase-and-trade cost structure that field crews will use</h2>
+<p>The best costing system is the one the field can actually support. If it takes too long to enter data, the numbers will be late or incomplete. If the codes are unclear, the data will be inconsistent.</p>
+<p>Start with a cost structure that mirrors how your jobs are managed.</p>
+<h3>Step 1: define the phase hierarchy</h3>
+<p>Keep the phase list aligned with your project lifecycle. For most contractors, a simple hierarchy works better than a highly complex one.</p>
+<p>Example:</p>
+<ul>
+<li>01 Preconstruction</li>
+<li>02 Sitework</li>
+<li>03 Structure</li>
+<li>04 Rough-in</li>
+<li>05 Enclosure</li>
+<li>06 Finishes</li>
+<li>07 Closeout</li>
+</ul>
+<p>Each phase should have a clear owner and a clear budget target.</p>
+<h3>Step 2: define trade-level cost codes</h3>
+<p>Within each phase, assign trade codes that reflect actual work packages. For example:</p>
+<ul>
+<li>04-10 Framing labor</li>
+<li>04-20 Framing materials</li>
+<li>05-10 Electrical rough-in labor</li>
+<li>05-20 Electrical rough-in materials</li>
+</ul>
+<p>This makes it easier to compare estimate versus actuals by scope.</p>
+<h3>Step 3: define what counts as a change event</h3>
+<p>A change event should have a unique identifier and a workflow. It should not be a vague note in a daily log.</p>
+<p>A useful change event record includes:</p>
+<ul>
+<li>Date discovered</li>
+<li>Cause</li>
+<li>Scope affected</li>
+<li>Cost impact</li>
+<li>Schedule impact</li>
+<li>Approval status</li>
+<li>Responsible party</li>
+</ul>
+<p>Teams often connect these records to approvals and project documentation so the change is visible from discovery to billing.</p>
+<h3>Step 4: train the field on simple reporting rules</h3>
+<p>The field should not have to guess where time or material belongs. Use rules like:</p>
+<ul>
+<li>Charge labor to the phase where the work is performed</li>
+<li>Charge rework to a separate code</li>
+<li>Log delayed time under a standby or disruption code</li>
+<li>Attach receipts to the purchase or delivery record</li>
+<li>Record change-related work only after the change is documented</li>
+</ul>
+<p>If the rules are simple, the data quality improves.</p>
+<h2>Variance analysis: how to spot profit drift before it becomes a loss</h2>
+<p>Variance analysis is where construction job costing becomes a management tool instead of a recordkeeping tool. The basic question is simple: <strong>What did we expect to spend, what did we actually spend, and why?</strong></p>
+<p>You can analyze variance at several levels:</p>
+<ul>
+<li>Total job</li>
+<li>Phase</li>
+<li>Trade</li>
+<li>Cost code</li>
+<li>Change event</li>
+</ul>
+<h3>Budget variance</h3>
+<p>Budget variance compares actual cost to the original budget.</p>
+<p>Example:</p>
+<ul>
+<li>Budgeted framing labor: $42,000</li>
+<li>Actual framing labor: $49,500</li>
+<li>Variance: $7,500 over</li>
+</ul>
+<p>That number alone is not enough. You need to know whether the variance came from:</p>
+<ul>
+<li>More hours than expected</li>
+<li>Higher labor rates</li>
+<li>Rework</li>
+<li>Weather delays</li>
+<li>Design changes</li>
+<li>Crew inefficiency</li>
+</ul>
+<h3>Productivity variance</h3>
+<p>Productivity variance compares labor output to planned production rates.</p>
+<p>If your estimate assumed one crew could frame a certain area in a set number of days, but the actual crew needed more time, the issue may be productivity rather than budget error. This distinction is critical for profitable estimating because it tells you whether the next estimate needs a different labor unit rate or a different production assumption.</p>
+<h3>Material variance</h3>
+<p>Material variance can be caused by:</p>
+<ul>
+<li>Price inflation</li>
+<li>Waste</li>
+<li>Damage</li>
+<li>Improper ordering</li>
+<li>Substitution</li>
+<li>Scope change</li>
+</ul>
+<p>For example, if drywall material is over budget, don’t assume the estimate was wrong. Check whether the overage came from a change order, a rework cycle, or a delivery issue that caused extra handling.</p>
+<h3>Change-event variance</h3>
+<p>Change-event variance should be tracked separately from base scope variance. Otherwise, you risk blaming the team for work that was never in the original contract.</p>
+<p>A clean workflow is:</p>
+<ol>
+<li>Identify the change</li>
+<li>Estimate impact</li>
+<li>Submit for approval</li>
+<li>Track approved vs. pending</li>
+<li>Separate change cost from base budget</li>
+<li>Bill the owner if applicable</li>
+</ol>
+<p>The platform can help route approvals and keep the supporting documentation attached to the event, which reduces the chance that change costs disappear into general job expense.</p>
+<h2>Practical workflows for field and office coordination</h2>
+<p>The biggest job costing failures usually come from handoff problems, not from accounting itself. The field sees the issue first. The office sees the cost later. If those two views are not connected, you lose time and margin.</p>
+<h3>Workflow 1: daily field capture to weekly cost review</h3>
+<p>A good rhythm looks like this:</p>
+<p><strong>Field daily</strong></p>
+<ul>
+<li>Record hours by crew and task</li>
+<li>Note delays, rework, or access issues</li>
+<li>Attach photos for unusual conditions</li>
+<li>Log material deliveries and shortages</li>
+</ul>
+<p><strong>Office weekly</strong></p>
+<ul>
+<li>Review labor against phase budget</li>
+<li>Compare material purchases to expected quantities</li>
+<li>Flag anomalies</li>
+<li>Send questions back to the PM or foreman</li>
+</ul>
+<p><strong>PM follow-up</strong></p>
+<ul>
+<li>Confirm whether the variance is a real overrun</li>
+<li>Determine if a change event exists</li>
+<li>Assign action items</li>
+</ul>
+<p>BuildCore can support this kind of loop with workflow tasks, reminders, and project tracking so the issue does not get buried until month-end.</p>
+<h3>Workflow 2: change event to approved cost</h3>
+<p>When scope changes, speed matters.</p>
+<p>A practical sequence:</p>
+<ol>
+<li>Field identifies the change</li>
+<li>PM documents the issue</li>
+<li>Estimator or PM prices the impact</li>
+<li>Approval request is sent</li>
+<li>Approved change is posted to the job</li>
+<li>Work proceeds with the updated scope</li>
+<li>Billing follows the approved record</li>
+</ol>
+<p>If a team skips steps 2 through 5, the cost may still get incurred, but the revenue may never be captured.</p>
+<h3>Workflow 3: trade-level review after each phase</h3>
+<p>At the end of each major phase, review:</p>
+<ul>
+<li>Budget vs. actual labor</li>
+<li>Budget vs. actual materials</li>
+<li>Open change events</li>
+<li>Pending invoices</li>
+<li>Rework or back charges</li>
+<li>Remaining contingency</li>
+</ul>
+<p>This helps you catch patterns early. For example, if rough-in labor is consistently over budget on multi-family projects, the estimate may need a different crew composition or a more realistic production rate.</p>
+<h2>How construction job costing improves estimating on the next project</h2>
+<p>Good estimating is not just about pricing the next job. It’s about learning from the last one in a way that improves future bids. That is where phase, trade, and change-event costing pays off.</p>
+<h3>Use actuals to refine labor assumptions</h3>
+<p>If your historical data shows that a specific trade always needs more hours in certain conditions, update the estimate.</p>
+<p>Examples:</p>
+<ul>
+<li>Tight site access increases labor time</li>
+<li>Occupied renovations require more protection and coordination</li>
+<li>Complex ceiling layouts slow electrical rough-in</li>
+<li>Weather exposure affects exterior work rates</li>
+</ul>
+<p>A profitable estimate should reflect real production conditions, not ideal ones.</p>
+<h3>Use material history to improve takeoff and procurement</h3>
+<p>Historical material data helps you adjust:</p>
+<ul>
+<li>Waste factors</li>
+<li>Lead times</li>
+<li>Supplier pricing assumptions</li>
+<li>Delivery sequencing</li>
+<li>Storage needs</li>
+</ul>
+<p>If your jobs repeatedly show material loss at a certain phase, the issue may be ordering too early, storing poorly, or not protecting product on site.</p>
+<h3>Use change-event history to price risk correctly</h3>
+<p>If a certain project type produces frequent change events, that risk should be visible in the estimate. Not every change can be predicted, but common patterns can be priced more accurately.</p>
+<p>Examples:</p>
+<ul>
+<li>Design development in tenant improvements</li>
+<li>Owner selection delays in custom homes</li>
+<li>Coordination issues in multi-trade interiors</li>
+<li>Utility conflicts in civil work</li>
+</ul>
+<p>The point is not to pad every estimate. The point is to identify known risk and price it deliberately instead of hoping it disappears.</p>
+<h3>Use phase and trade trends to adjust bid strategy</h3>
+<p>If you know where your margins are strongest, you can bid more intelligently.</p>
+<p>For example:</p>
+<ul>
+<li>If your team performs well on framing but struggles on finish coordination, focus on jobs where framing is a larger share of the scope.</li>
+<li>If electrical change work is consistently profitable, make sure the estimate includes realistic change management assumptions.</li>
+<li>If a trade is consistently underperforming, decide whether to tighten execution, subcontract differently, or reduce exposure.</li>
+</ul>
+<p>That’s the kind of insight a system like BuildCore can make easier when cost data, project notes, and approvals are tied together in one place.</p>
+<h2>A simple monthly review checklist for better cost control</h2>
+<p>Use this checklist to keep construction job costing practical:</p>
+<h3>Review by phase</h3>
+<ul>
+<li>Which phase is over budget?</li>
+<li>Is the variance labor, materials, or both?</li>
+<li>Was the phase affected by delays or rework?</li>
+<li>Are there open issues that will affect remaining work?</li>
+</ul>
+<h3>Review by trade</h3>
+<ul>
+<li>Which trade is carrying the largest variance?</li>
+<li>Is the issue tied to productivity or scope?</li>
+<li>Are subcontractor invoices aligned with the contract?</li>
+<li>Are there unresolved back charges or credits?</li>
+</ul>
+<h3>Review by change event</h3>
+<ul>
+<li>Are all changes documented?</li>
+<li>Are approvals complete?</li>
+<li>Has the cost been moved out of base scope?</li>
+<li>Has the change been billed if applicable?</li>
+</ul>
+<h3>Review by estimating feedback</h3>
+<ul>
+<li>Which assumptions were wrong?</li>
+<li>Where did actual production differ from estimate?</li>
+<li>Did material pricing move unexpectedly?</li>
+<li>Are there repeat problems across multiple jobs?</li>
+</ul>
+<h2>Common mistakes that hide the true cost of work</h2>
+<p>Even well-run contractors can miss the real story if the process is weak.</p>
+<h3>Mistake 1: lumping all labor into one code</h3>
+<p>When all labor is grouped together, you lose the ability to see which phase or trade caused the overrun.</p>
+<h3>Mistake 2: treating change work like base scope</h3>
+<p>This makes a profitable job look unprofitable and weakens your estimating history.</p>
+<h3>Mistake 3: reviewing costs only at month-end</h3>
+<p>By then, the issue has already compounded. Weekly review is much more useful.</p>
+<h3>Mistake 4: ignoring field notes</h3>
+<p>The foreman often knows the cause before the invoice arrives. If those notes never make it into the system, the office is guessing.</p>
+<h3>Mistake 5: not tying documentation to the cost record</h3>
+<p>Receipts, photos, approvals, and daily logs should support the cost line. Without that link, disputes become harder to resolve.</p>
+<p>A disciplined project documentation process can help keep those records connected so the cost story stays intact from the field to billing.</p>
+<h2>The bottom line for profitable estimating and better control</h2>
+<p>Construction job costing works best when it shows the project the way the team actually builds it: by phase, by trade, and by change event. That structure gives project managers better visibility, helps the field report more accurately, and gives estimators the historical data they need to price work with more confidence.</p>
+<p>If your current process only tells you whether a job made money after it is done, you are missing the management value of the data. The goal is not just to record cost. The goal is to understand cost early enough to influence labor, materials, and change decisions while the job is still moving.</p>
+<p>When teams connect field reporting, approvals, reminders, and reporting in one workflow, the system becomes much easier to manage. BuildCore is one example of how that can be organized without turning the process into extra admin work.</p>
+<!-- zenformed-product-cta:buildcore -->
+<aside class="blog-product-cta" data-app="buildcore" aria-label="BuildCore product call to action">
+  <div class="blog-product-cta__glow" aria-hidden="true"></div>
+  <div class="blog-product-cta__inner">
+    <div class="blog-product-cta__top">
+      <div class="blog-product-cta__brand">
+        <img src="/images/zenformed-app-icons/buildcore.png" alt="" class="blog-product-cta__icon" width="52" height="52" loading="lazy" decoding="async" />
+        <h2 class="blog-product-cta__title">BuildCore</h2>
+      </div>
+      <div class="blog-product-cta__content">
+        <p class="blog-product-cta__headline">Turn job costing into accountable project workflows.</p>
+      </div>
+    </div>
+    <ul class="blog-product-cta__benefits">
+          <li class="blog-product-cta__benefit"><span class="blog-product-cta__check" aria-hidden="true"></span>Customer approvals</li>
+          <li class="blog-product-cta__benefit"><span class="blog-product-cta__check" aria-hidden="true"></span>Workflow tracking</li>
+          <li class="blog-product-cta__benefit"><span class="blog-product-cta__check" aria-hidden="true"></span>Project documentation</li>
+          <li class="blog-product-cta__benefit"><span class="blog-product-cta__check" aria-hidden="true"></span>Reporting</li>
+    </ul>
+    <div class="blog-product-cta__action">
+      <a href="https://core.zenformed.com/products/buildcore" class="blog-product-cta__button">Explore BuildCore<span class="blog-product-cta__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</aside>
+
+  </div>
+  <footer class="blog-article-footer">
+    <a href="/blog/" class="blog-back-link">← Back to blog</a>
+  </footer>
+</article>
+
+    </main>
+    <script src="/js/navbar.js" defer></script>
+  </body>
+</html>

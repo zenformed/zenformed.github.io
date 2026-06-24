@@ -326,7 +326,9 @@ nav#navbar a:not([class*="logo"]):hover {
 }
 
 .navbar-container {
+  box-sizing: border-box;
   width: min(100%, 1500px);
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: clamp(1rem, 2.5vw, 3rem);
