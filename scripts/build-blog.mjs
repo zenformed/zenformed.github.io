@@ -4,6 +4,13 @@ import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { resolveBlogApp } from "./blog-apps.mjs";
+import {
+  getEffectivePublishDate,
+  isDraftPost,
+  isScheduledPost,
+  isVisiblePost,
+  normalizeDateIso,
+} from "./blog-publish.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -35,7 +42,7 @@ async function readTemplate(name) {
 }
 
 function formatDateDisplay(dateValue) {
-  const date = new Date(`${dateValue}T12:00:00`);
+  const date = new Date(`${normalizeDateIso(dateValue)}T12:00:00`);
   if (Number.isNaN(date.getTime())) {
     return escapeHtml(dateValue);
   }
@@ -44,23 +51,6 @@ function formatDateDisplay(dateValue) {
     month: "long",
     day: "numeric",
   }).format(date);
-}
-
-function normalizeDateIso(dateValue) {
-  if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
-    return dateValue.toISOString().slice(0, 10);
-  }
-
-  const str = String(dateValue).trim();
-  if (/^\d{4}-\d{2}-\d{2}$/.test(str)) {
-    return str;
-  }
-
-  const date = new Date(`${str}T12:00:00`);
-  if (Number.isNaN(date.getTime())) {
-    return str;
-  }
-  return date.toISOString().slice(0, 10);
 }
 
 function renderTags(tags) {
@@ -116,6 +106,8 @@ async function loadPosts() {
   }
 
   const posts = [];
+  let draftCount = 0;
+  let scheduledCount = 0;
 
   for (const entry of entries) {
     if (!entry.endsWith(".md")) {
@@ -126,18 +118,32 @@ async function loadPosts() {
     const source = await fs.readFile(filePath, "utf8");
     const { data, content } = matter(source);
 
+    if (isDraftPost(data)) {
+      draftCount += 1;
+      continue;
+    }
+
+    if (!isVisiblePost(data)) {
+      if (isScheduledPost(data)) {
+        scheduledCount += 1;
+      }
+      continue;
+    }
+
     validatePost(data, entry);
 
     const slug = deriveSlug(entry, data);
+    const publishDateIso = getEffectivePublishDate(data);
     const dateIso = normalizeDateIso(data.date);
+    const displayDateIso = publishDateIso ?? dateIso;
     const app = resolveBlogApp(data.app, entry);
 
     posts.push({
       slug,
       title: String(data.title).trim(),
       description: String(data.description).trim(),
-      date: dateIso,
-      dateDisplay: formatDateDisplay(dateIso),
+      date: displayDateIso,
+      dateDisplay: formatDateDisplay(displayDateIso),
       tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
       app,
       appIconHtml: renderAppIcon(app),
@@ -153,6 +159,14 @@ async function loadPosts() {
   const duplicates = slugs.filter((slug, index) => slugs.indexOf(slug) !== index);
   if (duplicates.length > 0) {
     throw new Error(`Duplicate blog slugs found: ${[...new Set(duplicates)].join(", ")}`);
+  }
+
+  if (draftCount > 0) {
+    console.log(`Skipped ${draftCount} draft post(s).`);
+  }
+
+  if (scheduledCount > 0) {
+    console.log(`Skipped ${scheduledCount} scheduled post(s) with a future publishDate.`);
   }
 
   return posts;
@@ -283,6 +297,32 @@ ${body}
 `;
 }
 
+function buildRss(posts) {
+  const items = posts
+    .map(
+      (post) => `    <item>
+      <title>${escapeHtml(post.title)}</title>
+      <link>${SITE_ORIGIN}/blog/${escapeHtml(post.slug)}/</link>
+      <guid isPermaLink="true">${SITE_ORIGIN}/blog/${escapeHtml(post.slug)}/</guid>
+      <pubDate>${new Date(`${post.date}T12:00:00Z`).toUTCString()}</pubDate>
+      <description>${escapeHtml(post.description)}</description>
+    </item>`,
+    )
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Zenformed Blog</title>
+    <link>${SITE_ORIGIN}/blog/</link>
+    <description>Practical guides on business systems, automation, and software built for how you actually work.</description>
+    <language>en-us</language>
+${items}
+  </channel>
+</rss>
+`;
+}
+
 async function buildBlog() {
   const [layoutTemplate, indexTemplate, postTemplate, navbar] = await Promise.all([
     readTemplate("layout.html"),
@@ -349,11 +389,15 @@ async function buildBlog() {
   const sitemap = buildSitemap(posts);
   await fs.writeFile(path.join(ROOT, "sitemap.xml"), sitemap, "utf8");
 
+  const rss = buildRss(posts);
+  await writeHtml(path.join(BLOG_OUT_DIR, "feed.xml"), rss);
+
   console.log(`Built blog index and ${posts.length} post(s).`);
   for (const post of posts) {
     console.log(`  → /blog/${post.slug}/`);
   }
   console.log("Updated sitemap.xml");
+  console.log("Updated blog/feed.xml");
 }
 
 buildBlog().catch((error) => {
