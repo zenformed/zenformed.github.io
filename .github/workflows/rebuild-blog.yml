@@ -1,0 +1,47 @@
+name: Rebuild Blog
+
+on:
+  schedule:
+    # Daily at 08:00 UTC so newly published posts appear on GitHub Pages.
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-blog
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build blog
+        run: npm run build:blog
+
+      - name: Commit rebuilt blog output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog/ sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No blog output changes to commit."
+          else
+            git commit -m "Rebuild scheduled blog posts"
+            git push
+          fi
